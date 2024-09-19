@@ -1,7 +1,7 @@
 # 文档属性配置
-site_name: mypy静态类型检查器 # 文档标题
+site_name: 网络技术简介-中文版 # 文档标题
 repo_name: hellowac/myppy-zh-cn
-repo_url: https://github.com/hellowac/mypy-zh-cn
+repo_url: https://github.com/hellowac/net-intro-zh-cn
 site_description: hellowac-类型检查
 
 # 主题配置
@@ -124,14 +124,14 @@ markdown_extensions:
 
 nav:
         - index.md
-        - c1.md
-        - c2.md
-        - c3.md
-        - c4.md
-        - c5.md
-        - c6.md
-        - c7.md
-        - c8.md
-        - c9.md
-        - c10.md
+        - 简介: c1.md
+        - 网络架构: c2.md
+        - 链接层: c3.md
+        - 网络层: c4.md
+        - 域名系统: c5.md
+        - 转换层: c6.md
+        - 应用层: c7.md
+        - 安全转换层: c8.md
+        - OSI模型: c9.md
+        - 封装: c10.md
         - 项目链接: project_links.md
