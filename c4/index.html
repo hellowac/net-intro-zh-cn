@@ -1,0 +1,1611 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac-类型检查">
+      
+      
+      
+      
+        <link rel="prev" href="../c3/">
+      
+      
+        <link rel="next" href="../c5/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
+    
+    
+      
+        <title>网络层（IP） - 网络技术简介-中文版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bd3936ea.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#网络层ip" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+你当前浏览的版本已不是最新版本，
+<a href="./..">
+    <strong>点击这里</strong>
+</a>查看最新版本的文档
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="网络技术简介-中文版" class="md-header__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            网络技术简介-中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              网络层（IP）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c1/" class="md-tabs__link">
+        
+  
+    
+  
+  简介
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c2/" class="md-tabs__link">
+        
+  
+    
+  
+  网络架构
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c3/" class="md-tabs__link">
+        
+  
+    
+  
+  链路层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  网络层（IP）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c5/" class="md-tabs__link">
+        
+  
+    
+  
+  域名系统
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c6/" class="md-tabs__link">
+        
+  
+    
+  
+  传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c7/" class="md-tabs__link">
+        
+  
+    
+  
+  应用层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c8/" class="md-tabs__link">
+        
+  
+    
+  
+  安全传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c9/" class="md-tabs__link">
+        
+  
+    
+  
+  OSI 模型
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c10/" class="md-tabs__link">
+        
+  
+    
+  
+  总结
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project_links/" class="md-tabs__link">
+        
+  
+    
+  
+  项目链接
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="网络技术简介-中文版" class="md-nav__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    网络技术简介-中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络架构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链路层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    网络层（IP）
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    网络层（IP）
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#网络层ip地址" class="md-nav__link">
+    网络层（IP）地址
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#路由器如何确定路由" class="md-nav__link">
+    路由器如何确定路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#情况变得更糟和更好时" class="md-nav__link">
+    情况变得更糟和更好时
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#确定你的路由" class="md-nav__link">
+    确定你的路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#获取-ip-地址" class="md-nav__link">
+    获取 IP 地址
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#一种不同的地址重用方式" class="md-nav__link">
+    一种不同的地址重用方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#全球-ip-地址分配" class="md-nav__link">
+    全球 IP 地址分配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    域名系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    应用层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSI 模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目链接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#网络层ip地址" class="md-nav__link">
+    网络层（IP）地址
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#路由器如何确定路由" class="md-nav__link">
+    路由器如何确定路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#情况变得更糟和更好时" class="md-nav__link">
+    情况变得更糟和更好时
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#确定你的路由" class="md-nav__link">
+    确定你的路由
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#获取-ip-地址" class="md-nav__link">
+    获取 IP 地址
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#一种不同的地址重用方式" class="md-nav__link">
+    一种不同的地址重用方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#全球-ip-地址分配" class="md-nav__link">
+    全球 IP 地址分配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="网络层ip">网络层（IP）<a class="headerlink" href="#网络层ip" title="Permanent link">&para;</a></h1>
+<p><strong>Internetworking Layer (IP)</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">中文</label><label for="__tabbed_1_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>现在我们已经能够在单一链路上移动数据，是时候考虑如何在全国甚至全球范围内传输数据了。要将数据从你的计算机发送到数以亿计的目的地，数据需要经过多个跳跃和多个网络。当你从家里旅行到一个遥远的目的地时，你可能会先走到公交车站，然后乘火车到城市，再换乘另一列火车到机场，接着搭飞机到另一个机场，之后打车进入城市，再乘火车到一个小镇，再换乘公交车到更小的镇，最后从公交车站走到你的酒店。数据包也需要通过多种交通方式才能到达目的地。对于一个要前往另一个国家的数据包来说，“走路”、“公交车”、“火车”和“飞机”可以视为不同的链路层，例如 WiFi、以太网、光纤和卫星。</p>
+<p>在旅行的每一个环节，你（或者你的数据包）都在使用一个共享媒介进行运输。可能在同一辆公交车、火车或飞机上有数百名其他旅客，但你的旅行与其他旅客的不同在于你在每个“跳跃”结束时所做的决定。例如，当你到达一个火车站时，你可能会下车，然后穿过车站选择一列特定的出发火车继续旅行。来自不同起点和目的地的旅客会做出不同的选择。你在旅行过程中做出的所有选择最终形成了一系列链路（或跳跃），将你从起点带到目的地。</p>
+<p>随着数据包从起点到达目的地，它还会经过多个“站点”，在这些地方会决定将数据包转发到哪个输出链路。对于数据包，我们称这些地方为“路由器”。路由器就像火车站一样，拥有多个进出链路。有些链路可能是光纤，有些可能是卫星，还有一些可能是无线的。路由器的任务是确保数据包在路由器中移动，并最终到达正确的出站链路层。一个典型的数据包在从源头到目的地的过程中会经过五到二十个路由器。</p>
+<p>但与火车站需要查看显示屏以找出下一班火车不同，路由器是通过查看目的地址来决定数据包需要走哪个输出链路。就好像火车站的工作人员会见到每一位下车的旅客，询问他们的目的地，并带领他们到达下一班火车。如果你是一个数据包，你就不需要再查看列车出发和站台的列表了！</p>
+<p>路由器能够快速确定数据包的输出链路，因为每个数据包都有其最终目的地址的标记。这被称为互联网协议地址，简称 IP 地址。我们精心构造 IP 地址，以使路由器转发数据包的工作尽可能高效。</p>
+</div>
+<div class="tabbed-block">
+<p>Now that we can move data across a single link, it's time to figure out how to move it across the country or around the world. To send data from your computer to any of a billion destinations, the data needs to move across multiple hops and across multiple networks.  When you travel from your home to a distant destination, you might walk from your home to a bus stop, take a train to the city, take another train to the airport, take a plane to a different airport, take a taxi into the city, then take a train to a smaller town, a bus to an even smaller town, and finally walk from the bus stop to your hotel. A packet also needs to take multiple forms of transportation to reach its destination. For a packet taking its "trip" to another country, the "walk", "bus", "train", and "plane" can be thought of as different link layers like WiFi, Ethernet, fiber optic, and satellite.</p>
+<p><a class="glightbox" href="../sketchnote/Traveling_Packets.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Travelling Packets" src="../sketchnote/Traveling_Packets.svg" /></a></p>
+<p>At each point during the trip, you (or your packet) are being transported using a shared medium. There might be hundreds of other people on the same bus, train, or plane, but your trip is different from that of every other traveller because of the decisions that you make at the end of each of your "hops". For instance, when you arrive at a train station, you might get off one train, then walk through the station and select a particular outbound train to continue your journey. Travellers with different starting points and destinations make a different series of choices. All of the choices you make during your trip result in you following a series of links (or hops) along a route that takes you from your starting point to your destination.  </p>
+<p>As your packet travels from its starting point to its destination, it also passes through a number of "stations" where a decision is made as to which output link your packet will be forwarded on. For packets, we call these places "routers". Like train stations, routers have many incoming and outgoing links. Some links may be fiber optic, others might be satellite, and still others might be  wireless. The job of the router is to make sure packets move through the router and end up on the correct outbound link layer. A typical packet passes through from five to 20 routers as it moves from its source to its destination.</p>
+<p>But unlike a train station where you need to look at displays to figure out the next train you need to take, the router looks at the destination address to decide which outbound link your packet needs to take. It is as if a train station employee met every single person getting off an inbound train, asked them where they were headed, and escorted them to their next train. If you were a packet, you would never have to look at another screen with a list of train departures and tracks!</p>
+<p>The router is able to quickly determine the outbound link for your packet because every single packet is marked with its ultimate destination address. This is called the Internet Protocol Address, or IP Address for short. We carefully construct IP addresses to make the router's job of forwarding packets as efficient as possible.</p>
+</div>
+</div>
+</div>
+<h2 id="网络层ip地址">网络层（IP）地址<a class="headerlink" href="#网络层ip地址" title="Permanent link">&para;</a></h2>
+<p><strong>Internet Protocol (IP) Addresses</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">中文</label><label for="__tabbed_2_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在上一节中，我们讨论了链路层地址时提到，链路地址是在硬件制造时分配的，并且在计算机的整个生命周期中保持不变。我们无法使用链路层地址在多个网络之间路由数据包，因为链路层地址与计算机连接到网络的位置之间没有关系。由于便携式计算机和手机不断移动，系统需要追踪每台计算机从一个位置移动到另一个位置的情况。而在网络上有数十亿台计算机的情况下，使用链路层地址进行路由决策将变得缓慢且低效。</p>
+<p>为了简化这一过程，我们根据计算机连接到网络的位置为每台计算机分配另一个地址。IP 地址有两个不同的版本。旧版（经典）IPv4 地址由四个用点分隔的数字组成，例如：</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">212.78.1.25</span>
+</code></pre></div>
+
+<p>每个数字的范围是 0 到 255。如今，连接到互联网的计算机数量如此之多，以至于我们已经快用完可分配的 IPv4 地址。IPv6 地址更长，格式如下：</p>
+<div class="codehilite"><pre><span></span><code><span class="mi">2001</span><span class="o">:</span><span class="mi">0</span><span class="n">db8</span><span class="o">:</span><span class="mi">85</span><span class="n">a3</span><span class="o">:</span><span class="mi">0042</span><span class="o">:</span><span class="mi">1000</span><span class="o">:</span><span class="mi">8</span><span class="n">a2e</span><span class="o">:</span><span class="mi">0370</span><span class="o">:</span><span class="mi">7334</span>
+</code></pre></div>
+
+<p>在本节中，我们将重点讨论经典的 IPv4 地址，但所有的概念同样适用于 IPv4 和 IPv6 地址。</p>
+<p>关于 IP 地址最重要的事情是，它们可以分为两个部分。IP 地址可以在多个点分为“网络号”和“主机标识符”。在这个例子中，我们将地址简单地分为两半。两部分地址的第一部分称为“网络号”。如果我们将一个 IPv4 地址拆分为两部分，可能会得到以下内容：</p>
+<div class="codehilite"><pre><span></span><code>网络号：212.78
+主机标识符：1.25
+</code></pre></div>
+
+<p>这个概念是许多计算机可以通过一个单一的连接连接到互联网。整个大学校园、学校或企业都可以使用一个或几个网络号进行连接。在上面的例子中，最多可以连接 65,536 台计算机到使用“212.78”的网络号。由于所有计算机对其他互联网的表现是通过一个单一连接，因此所有 IP 地址为：</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">212.78.</span><span class="o">*</span><span class="mf">.</span><span class="o">*</span>
+</code></pre></div>
+
+<p>的数据包都可以路由到同一位置。</p>
+<p>通过使用网络号和主机标识符的这种方法，路由器不再需要追踪数十亿台个别计算机。相反，它们只需要跟踪大约一百万个或更少的不同网络号。</p>
+<p>因此，当你的数据包到达一个路由器时，路由器需要决定将数据包发送到哪个出站链路，它不需要查看整个 IP 地址。它只需查看地址的第一部分以确定最佳的出站链路。</p>
+</div>
+<div class="tabbed-block">
+<p>In the previous section where we talked about Link layer addresses, we said that link addresses were assigned when the hardware was manufactured and stayed the same throughout the life of a computer. We cannot use link layer addresses to route packets across multiple networks because there is no relationship between a link layer address and the location where that computer is connected to the network. With portable computers and cell phones moving constantly, the system would need to track each individual computer as it moved from one location to another. And with billions of computers on the network, using the link layer address to make routing decisions would be slow and inefficient.</p>
+<p><a class="glightbox" href="../images/layers-internetwork.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="The Internetwork Layer" src="../images/layers-internetwork.svg" /></a></p>
+<p>To make this easier, we assign another address to every computer based on where the computer is connected to the network. There are two different versions of IP addresses. The old (classic) IPv4 addresses consist of four numbers separated by dots like this, and look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">212.78.1.25</span>
+</code></pre></div>
+
+<p>Each of the numbers can only be from 0 through 255. We have so many computers connected to the Internet now that we are running out of IPv4 addresses to assign to them.  IPv6 address are longer and look like:</p>
+<div class="codehilite"><pre><span></span><code><span class="mi">2001</span><span class="o">:</span><span class="mi">0</span><span class="n">db8</span><span class="o">:</span><span class="mi">85</span><span class="n">a3</span><span class="o">:</span><span class="mi">0042</span><span class="o">:</span><span class="mi">1000</span><span class="o">:</span><span class="mi">8</span><span class="n">a2e</span><span class="o">:</span><span class="mi">0370</span><span class="o">:</span><span class="mi">7334</span>
+</code></pre></div>
+
+<p>For this section we will focus on the classic IPv4 addresses, but all of the
+ideas apply equally to IPv4 and IPv6 addresses.</p>
+<p>The most important thing about IP addresses is that they can be broken into two parts. There are many points where an IP address can be broken into "Network Number" and "Host Identifier" - for this example, we will just split the address in half. The first part of the two-piece address is called the "Network Number". If we break out an IPv4 address into two parts, we might find the following:</p>
+<div class="codehilite"><pre><span></span><code>Network Number: 212.78
+Host Identifier: 1.25
+</code></pre></div>
+
+<p>The idea is that many computers can be connected via a single connection to the Internet. An entire college campus, school, or business could connect using a single network number, or only a few network numbers. In the example above,  65,536 computers could be connected to the network using the network number of "212.78". Since all of the computers appear to the rest of the Internet on a single connection, all packets with an IP address of:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">212.78.</span><span class="o">*</span><span class="mf">.</span><span class="o">*</span>
+</code></pre></div>
+
+<p>can be routed to the same location.</p>
+<p>By using this approach of a network number and a host identifier, routers no longer have to keep track of billions of individual computers. Instead, they need to keep track of perhaps a million or less different network numbers.</p>
+<p>So when your packet arrives in a router and the router needs to decide which outbound link to send your packet to, the router does not have to look at the entire IP address. It only needs to look at the first part of the address to determine the best outbound link.</p>
+</div>
+</div>
+</div>
+<h2 id="路由器如何确定路由">路由器如何确定路由<a class="headerlink" href="#路由器如何确定路由" title="Permanent link">&para;</a></h2>
+<p><strong>How Routers Determine the Routes</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">中文</label><label for="__tabbed_3_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>虽然将许多 IP 地址合并为一个单一网络号大大减少了路由器必须跟踪的单个端点数量，但每个路由器仍然需要一种方法来了解从自身到它可能遇到的每个网络号的路径。</p>
+<p>当一个新的核心路由器连接到互联网时，它并不知道所有的路由。它可能知道一些预配置的路由，但为了建立如何路由数据包的全貌，它必须在处理数据包时发现路由。当路由器遇到一个它尚不知如何路由的数据包时，它会查询其“邻居”路由器。知道如何路由该网络号的邻居路由器会将其数据发送回请求的路由器。有时，邻居路由器需要询问它们的邻居，依此类推，直到找到实际的路由并发送回请求的路由器。</p>
+<p>在最简单的情况下，一个新的核心路由器可以连接到互联网，并慢慢建立网络号到出站链路的映射，从而能够根据每个传入数据包的 IP 地址正确路由数据包。我们将这种网络号到出站链路的映射称为特定路由器的“路由表”。</p>
+<p>当互联网正常运行时，每个路由器都有一个相对完整的路由表，并且很少遇到新的网络号。一旦路由器在第一次看到发往该网络号的数据包时找到了通往新网络号的路由，它就不需要重新发现该网络号的路由，除非发生了变化或出现故障。这意味着路由器在处理第一个数据包时会进行查找，但接下来的十亿个数据包可以直接使用路由表中已有的信息进行路由。</p>
+</div>
+<div class="tabbed-block">
+<p>While the idea of the collapsing many IP addresses into a single network number greatly reduces the number of individual endpoints that a router must track to properly route packets, each router still needs a way to learn the path from itself to each of the network numbers it might encounter.</p>
+<p>When a new core router is connected to the Internet, it does not know all the routes. It may know a few preconfigured routes, but to build a picture of how to route packets it must discover routes as it encounters packets. When a router encounters a packet that it does not already know how to route, it queries the routers that are its "neighbors". The neighboring routers that know how to route the network number send their data back to the requesting router.  Sometimes the neighboring routers need to ask their neighbors and so on until the route is actually found and sent back to the requesting router.</p>
+<p>In the simplest case, a new core router can be connected to the Internet and slowly build a map of network numbers to outbound links so it can properly route packets based on the IP address for each incoming packet.  We call this mapping of network numbers to outbound links the "routing table" for a particular router.</p>
+<p>When the Internet is running normally, each router has a relatively complete routing table and rarely encounters a new network number. Once a router figures out the route to a new network number the first time it sees a packet destined for that network number, it does not need to rediscover the
+route for the network number unless something changes or goes wrong. This means that the router does a lookup on the first packet, but then it could route the next billion packets to that network number just by using the information it already has in its routing tables.</p>
+</div>
+</div>
+</div>
+<h2 id="情况变得更糟和更好时">情况变得更糟和更好时<a class="headerlink" href="#情况变得更糟和更好时" title="Permanent link">&para;</a></h2>
+<p><strong>When Things Get Worse and Better</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">中文</label><label for="__tabbed_4_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>有时网络会出现问题，路由器必须找到绕过这些问题的方式。一个常见的问题是某个出站链路故障。可能是有人绊倒了电缆，拔掉了光纤。这时，路由器有一系列网络号需要通过已经故障的链路进行路由。路由器失去出站链路后的恢复过程出奇简单。路由器会丢弃所有在该链路上进行路由的路由表条目。随后，当更多数据包到达这些网络号时，路由器会重新进行路由发现过程，这次会询问所有邻近路由器，除了那些由于故障链路而无法联系的路由器。</p>
+<p><a class="glightbox" href="../sketchnote/Routing.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="动态路由" src="../sketchnote/Routing.svg" /></a></p>
+<p>在路由表反映新的网络配置重建过程中，数据包的路由速度会变慢，但过一段时间后，事情会恢复正常。</p>
+<p>因此，在网络核心中，从源网络到目标网络始终至少存在两条独立路径是非常重要的。如果始终至少有两条独立的可能路径，我们称这样的网络为“二连通网络”。二连通网络可以从任何单一链路故障中恢复。在网络连接很多的地方，比如美国东海岸，网络可以失去许多链路而不会完全断开。但当你在家或学校只有一个连接时，如果该连接中断，你就会完全断开。</p>
+<p>在某个时刻，故障链路被修复或新的链路被建立，路由器希望充分利用这些新链路。路由器始终关注改善其路由表，并在空闲时间寻找机会提升路由表。当通信出现间歇时，路由器会向邻近路由器请求其全部或部分路由表。路由器会查看邻居的路由表，如果发现其他路由器到某个网络号的路径更优，则会更新自己的网络表，将该网络号的数据包通过具有更优路径的路由器转发。</p>
+<p>通过这些处理故障和交换路由表信息的方法，路由器可以迅速应对网络故障，将数据包从故障或慢速链路重新路由到正常或更快的链路。与此同时，每个路由器也在与其邻近路由器交流，寻找改进自己路由表的方法。尽管没有任何来源到任何目的地的“最佳路径”的中央来源，路由器几乎总是能够找到从源到目的地的最快路径。路由器还擅长检测并动态地将数据包重新路由到慢速或暂时过载的链路。</p>
+<p>路由器发现网络结构的方式的一个副作用是，从源到目的地的数据包路径可能会随着时间变化。你甚至可以发送一个数据包，紧接着发送另一个数据包，由于路由的方式，第二个数据包可能会在第一个数据包之前到达目的地。我们不要求 IP 层关注数据包的顺序；它已经有足够多的事情要处理了。</p>
+<p>我们将带有源和目的 IP 地址的数据包像在邮局寄信那样倾倒到互联网中。每个数据包在系统中找到自己的路径，最终到达目的地。</p>
+</div>
+<div class="tabbed-block">
+<p>Sometimes the network has problems and a router must find a way to route data around the problems. A common problem is that one of the outbound links fails. Perhaps someone tripped over a wire and unplugged a fiber optic cable. At this point, the router has a bunch of network numbers that it wants to route out on a link that has failed. The recovery when a router loses an outbound link is surprisingly simple. The router discards all of the entries in its routing table that were being routed on that link. Then as more packets arrive for those network numbers, the router goes through the route discovery process again, this time asking all the neighboring routers except the ones that can no longer be contacted due to the broken link.</p>
+<p><a class="glightbox" href="../sketchnote/Routing.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Dynamic Routing" src="../sketchnote/Routing.svg" /></a></p>
+<p>Packets are routed more slowly for a while as routing tables are rebuilt that reflect the new network configuration, but after a while things are humming along nicely.</p>
+<p>This is why it is important for there to always be at least two independent paths from a source network to a destination network in the core of the network. If there are always at least two possible independent routes, we say that a network is a "two-connected network". A two-connected network can recover from any single link outage.  In places where there are a lot of network connections, like the east coast of the United States, the network could lose many links without ever becoming completely disconnected. But when you are at your home or school and have only one connection, if that connection goes down you are disconnected completely.</p>
+<p>At some point the broken link is repaired or a new link is brought up, and the router wants to make best use of the new links. The router is always interested in improving its routing tables, and looks for opportunities to improve its routing tables in its spare time. When there is a lull in communication, a router will ask a neighboring router for all or part of its routing table. The router looks through the neighbor's tables and if it looks like the other router has a better route to a particular network number, it updates its network table to forward packets for that network number through the link to the router that has a better route.</p>
+<p>With these approaches to outages and the exchange of routing table information, routers can quickly react to network outages and reroute packets from links that are down or slow to links that are up and/or faster. All the while, each router is talking to its neighboring routers to find ways to improve its own routing table. Even though there is no central source of the "best route" from any source to any destination, the routers are good at knowing the fastest path from a source to a destination nearly all the time. Routers are also good at detecting and dynamically routing packets around links that are slow or temporarily overloaded.</p>
+<p>One of the side effects of the way routers discover the structure of the network is that the route your packets take from the source to the destination can change over time. You can even send one packet immediately followed by another packet and because of how the packets are routed, the second packet might arrive at the destination before the first packet. We don't ask the IP layer to worry about the order of the packets; it already has enough to worry about.</p>
+<p>We pour our packets with source and destination IP addresses into the Internet much like we would send out a bunch of letters in the mail at the post office. The packets each find their way though the system and arrive at their destinations.</p>
+</div>
+</div>
+</div>
+<h2 id="确定你的路由">确定你的路由<a class="headerlink" href="#确定你的路由" title="Permanent link">&para;</a></h2>
+<p><strong>Determining Your Route</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">中文</label><label for="__tabbed_5_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在互联网中，没有任何地方能够预先知道你的数据包从计算机到特定目的地的路径。即使是参与转发你的数据包的路由器，也并不知道你的数据包将采取的整个路径。它们只知道将数据包发送到哪个链路，以便让其更接近最终目的地。</p>
+<p>但是，事实证明，大多数计算机都有一个网络诊断工具，称为“traceroute”（或根据操作系统的不同为“tracert”），可以让你追踪计算机与目标计算机之间的路径。由于任意两个计算机之间的路径可能会因数据包而异，因此当我们“追踪”一条路径时，这只是对数据包实际路径的“相当不错的猜测”。</p>
+<p>traceroute 命令实际上并不会“追踪”你的数据包。它利用了 IP 网络协议中的一个特性，该特性旨在避免数据包被“困住”在网络中而无法到达目的地。在查看 traceroute 之前，我们先快速了解一下数据包如何可能在网络中永远被困，以及 IP 协议是如何解决这个问题的。</p>
+<p>记住，任何单个路由器中的信息都是不完美的，仅仅是特定网络号的最佳出站链路的近似值，每个路由器都无法知道其他路由器会做什么。但如果我们有三个路由器，其路由表条目形成一个无尽的循环会怎样呢？</p>
+<p><a class="glightbox" href="../images/router-loop.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Routing Vortex" src="../images/router-loop.svg" /></a></p>
+<p>每个路由器都认为它知道以“212.78”开头的 IP 地址的最佳出站链路。但由于某种原因，这些路由器有些混淆，它们的路由表形成了一个循环。如果一个以“212.78”开头的数据包进入其中一个路由器，它将永远在三个链路的圆圈中被路由。没有出路。当更多带有相同前缀的数据包到达时，它们将被添加到“无限数据包漩涡”中。很快，链路上将充满往返流量，路由器将充满等待发送的数据包，所有三个路由器都会崩溃。这个问题比有人绊倒光纤电缆还要严重，因为它可能导致多个路由器崩溃。</p>
+<p>为了防止这个问题，互联网协议设计者为每个数据包添加了一个称为生存时间（TTL）的数字。这个数字起始值大约为 30。每当 IP 数据包通过一个链路时，路由器就会将 TTL 值减去 1。因此，如果数据包需要 15 次跳转才能穿越互联网，它在另一端的 TTL 值将为 15。</p>
+<p>但现在让我们看看当存在路由循环（或“数据包漩涡”）时 TTL 是如何运作的。由于数据包不断在循环中被转发，最终 TTL 将达到零。当 TTL 达到零时，路由器会假设出现了问题，并丢弃该数据包。这种方法确保了路由循环不会导致网络的整个区域崩溃。</p>
+<p>这真是一个相当酷的网络协议工程。为了检测和恢复路由循环，我们只需在数据包中放入一个数字，在每个链路上减去 1，当数字变为零时丢弃数据包。</p>
+<p>实际上，当路由器丢弃一个数据包时，它通常会发送一个礼貌通知，类似于“抱歉，我不得不丢弃你的数据包。”这个消息包含了丢弃数据包的路由器的 IP 地址。</p>
+<p>网络循环实际上是相当罕见的，但我们可以利用这个丢包通知来绘制数据包在网络中经过的近似路径。traceroute 程序以巧妙的方式发送数据包，以便让通过的路由器返回通知。首先，traceroute 发送一个 TTL 为 1 的数据包。该数据包到达第一个路由器并被丢弃，计算机收到来自第一个路由器的通知。然后 traceroute 发送一个 TTL 为 2 的数据包。该数据包通过第一个路由器，但被第二个路由器丢弃，后者向你发送一条关于丢弃数据包的消息。接着，traceroute 发送一个 TTL 为 3 的数据包，并继续增加 TTL，直到数据包到达目的地。</p>
+<p>通过这种方法，traceroute 构建了一个近似路径，展示了数据包在网络中的行进路线。</p>
+<p><a class="glightbox" href="../images/traceroute-stanford.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Traceroute from Michigan to Stanford" src="../images/traceroute-stanford.svg" /></a></p>
+<p>从密歇根州安阿伯到加利福尼亚州帕洛阿尔托需要 14 次跳转。数据包经过了堪萨斯、德克萨斯、洛杉矶和奥克兰。如果你开车或乘火车，这可能不是两个城市之间的最佳路线，但在那一天，两个城市之间的数据包通过互联网的最佳路径就是这条。</p>
+<p><a class="glightbox" href="../sketchnote/Dropped_packet.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Notifications of Dropped Packets" src="../sketchnote/Dropped_packet.svg" /></a></p>
+<p>你还可以看到数据包从源到每个路由器，以及从源到目的地所需的时间。毫秒（ms）是 1/1000 秒。因此，77.317 ms 仅略低于 0.1 秒。这个网络相当快。</p>
+<p>有时 traceroute 可能需要一些时间，最长可达一两分钟。并不是所有路由器都会给你“我丢弃了你的数据包”的消息。在上面的例子中，第 13 跳的路由器在没有说“抱歉”的情况下就丢弃了我们的数据包。traceroute 等待消息，几秒钟后放弃并增加 TTL 值，以便超过那个不礼貌的路由器。</p>
+<p>如果你对一个包含海底电缆的连接运行 traceroute，你可以看到数据在海底传输的速度。下面是密歇根大学与中国北京大学之间的 traceroute。</p>
+<p><a class="glightbox" href="../images/traceroute-peking.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Traceroute from Michigan to Peking University" src="../images/traceroute-peking.svg" /></a></p>
+<p>你可以看到在第七和第八步中，数据包遇到了长海底电缆。时间从不到 0.1 秒增加到近 0.25 秒。尽管 0.25 秒比 0.1 秒慢，但考虑到数据包几乎是绕着世界旅行的，这还是相当令人印象深刻的。</p>
+<p>我们 IP 网络的核心是显著的。大多数时候，我们并不在意路由器为确保我们的数据包快速从计算机传输到全球各个目的地所付出的努力。接下来，我们将从查看网络核心的功能转向 IP 地址在边缘的管理。</p>
+</div>
+<div class="tabbed-block">
+<p>There is no place in the Internet that knows in advance the route your packets will take from your computer to a particular destination. Even the routers that participate in forwarding your packets across the Internet do not know the entire route your packet will take. They only know which link to send your packets to so they will get closer to their final destination.</p>
+<p>But it turns out that most computers have a network diagnostic tool called "traceroute" (or "tracert", depending on the operating system) that allows you to trace the route between your computer and a destination computer. Given that the route between any two computers can change from one packet to another, when we "trace" a route, it is only a "pretty good guess" as to the actual route packets will take.</p>
+<p>The traceroute command does not actually "trace" your packet at all. It takes advantage of a feature in the IP network protocol that was designed to avoid packets becoming "trapped" in the network and never reaching their destination. Before we take a look at traceroute, let's take a quick look at how a packet might get trapped in the network forever and how the IP protocol solves that problem.</p>
+<p>Remember that the information in any single router is imperfect and is only an approximation of the best outbound link for a particular network number, and each router has no way of knowing what any other router will do. But what if we had three routers with routing table entries that formed an endless loop?</p>
+<p><a class="glightbox" href="../images/router-loop.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Routing Vortex" src="../images/router-loop.svg" /></a></p>
+<p>Each of the routers thinks it knows the best outbound link for IP addresses that start with "212.78". But somehow the routers are a little confused and their routing tables form a loop. If a packet with a prefix of "212.78" found its way into one of these routers, it would be routed around a circle of three links forever. There is no way out. As more packets arrived with the same prefix, they would just be added to the "infinite packet vortex". Pretty soon the links would be full of traffic going round and round, the routers would fill up with packets waiting to be sent, and all three routers would crash. This problem is worse than having someone trip over a fiber optic cable, since it can cause several routers to crash.</p>
+<p>To solve this problem, the Internet Protocol designers added a number to each packet that is called the Time To Live (TTL). This number starts out with a value of about 30. Each time an IP packet is forwarded down a link, the router subtracts 1 from the TTL value. So if the packet takes 15 hops to cross the Internet, it will emerge on the far end with a TTL of 15.</p>
+<p>But now let's look at how the TTL functions when there is a routing loop (or "packet vortex") for a particular network number. Since the packet keeps getting forwarded around the loop, eventually the TTL reaches zero. And when the TTL reaches zero, the router assumes that something is wrong and throws the packet away. This approach ensures that routing loops do not bring whole areas of the network down.</p>
+<p>So that is a pretty cool bit of network protocol engineering. To detect and recover from routing loops, we just put a number in, subtract 1 from that number on each link, and when the number goes to zero throw the packet away.</p>
+<p>It also turns out that when the router throws a packet away, it usually sends back a courtesy notification, something like, "Sorry I had to throw your packet away." The message includes the IP address of the router that threw the packet away.</p>
+<p>Network loops are actually pretty rare, but we can use this notification that a packet was dropped to map the approximate route a packet takes through the network. The traceroute program sends packets in a tricky manner to get the routers that your packets pass through to send it back notifications. First, traceroute sends a packet with a TTL of 1. That packet gets to the first router and is discarded and your computer gets a notification from the first router. Then traceroute sends a packet with a TTL of 2. That packet makes it through the first router and is dropped by the second router, which sends you back a note about the discarded packet. Then traceroute sends a packet with a TTL of 3, and continues to increase the TTL until the packet makes it all the way to its destination.</p>
+<p>With this approach, traceroute builds up an approximate path that your packets are taking across the network.</p>
+<p><a class="glightbox" href="../images/traceroute-stanford.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Traceroute from Michigan to Stanford" src="../images/traceroute-stanford.svg" /></a></p>
+<p>It took 14 hops to get from Ann Arbor, Michigan to Palo Alto, California. The packets passed through Kansas, Texas, Los Angeles, and Oakland. This might not be the best route between the two cities if you were driving a car or taking a train, but on that day for packets between the two cities this was the best route on the Internet.</p>
+<p><a class="glightbox" href="../sketchnote/Dropped_packet.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Notifications of Dropped Packets" src="../sketchnote/Dropped_packet.svg" /></a></p>
+<p>You can also see how long it took the packets to make it from the source to each router, and then from the source to the destination. A millisecond (ms) is a 1/1000 of a second. So 77.317 ms is just under a tenth of a second. This network is pretty fast.</p>
+<p>Sometimes a traceroute can take a little while, up to a minute or two. Not all routers will give you the "I discarded your packet" message. In the example above, the router at hop 13 threw our packet away without saying "I am sorry". Traceroute waits for the message and after a few seconds just gives up and increases the TTL value so it gets past the rude router.</p>
+<p>If you run a traceroute for a connection that includes an undersea cable, you can see how fast data moves under the sea. Here is a traceroute between the University of Michigan and Peking University in China.</p>
+<p><a class="glightbox" href="../images/traceroute-peking.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Traceroute from Michigan to Peking University" src="../images/traceroute-peking.svg" /></a></p>
+<p>You can see when the packet is encountering a long undersea cable in steps seven and eight. The time goes from less than 1/10 of a second to nearly &frac14; of a second. Even though &frac14; of a second is slower than 1/10 a second, it is pretty impressive when you consider that the packet is going nearly all of the way around the world in that &frac14; second.</p>
+<p>The core of our IP network is remarkable.  Most of the time we don't really care how hard the routers are working to make sure our packets move quickly from our computer to the various destinations around the world.  Next we will move from looking at how the core of the network functions to how IP addresses are managed at the edges.</p>
+</div>
+</div>
+</div>
+<h2 id="获取-ip-地址">获取 IP 地址<a class="headerlink" href="#获取-ip-地址" title="Permanent link">&para;</a></h2>
+<p><strong>Getting an IP Address</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">中文</label><label for="__tabbed_6_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>越来越多的计算机是便携式或移动式的。我们刚刚提到过，IP 层使用网络号跟踪大型计算机组的重要性，而不是单独跟踪每一台计算机。但由于这些网络号表示与网络的特定物理连接，当我们将计算机从一个位置移动到另一个位置时，它将需要一个新的 IP 地址。请记住，链路层地址是在计算机制造时设置的，并在计算机的整个生命周期中不会改变。如果你在一家咖啡店合上笔记本电脑，然后使用家里的 WiFi 重新打开它，你的计算机将需要一个不同的 IP 地址。</p>
+<p>当计算机从一个网络移动到另一个网络时获得不同 IP 地址的能力使用了一种称为“动态主机配置协议”（简称 DHCP）的协议。DHCP 相当简单。回到链路层部分，回忆一下你的计算机在链路级别首先要做的事情是通过发送消息到一个特殊的广播地址询问“这个网络上有基站吗？”一旦你的计算机通过该基站成功连接到链路层，它会发送另一个广播消息，这次询问“这个网络上是否有网关可以让我连接到互联网？如果有，请告诉我你的 IP 地址，并告诉我我在这个网络上应该使用哪个 IP 地址。”</p>
+<p>当网关路由器回复时，你的计算机会获得一个临时的 IP 地址用于该网络（例如，当你在咖啡店时）。在一段时间内如果路由器没有收到你的计算机的信息，它会认为你已经离开，并将这个 IP 地址借给另一台计算机。</p>
+<p>如果这个重用借用的 IP 地址的过程出错，最终会导致两台计算机在同一个网络上使用相同的 IP 地址。也许你在计算机上见过类似的信息：“另一台计算机正在使用 192.168.0.5，我们已停止使用此地址。”你的计算机发现另一台具有不同链路地址的计算机正在使用它认为分配给自己的 IP 地址。</p>
+<p><a class="glightbox" href="../sketchnote/Dhcp.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="通过 DHCP 获取 IP 地址" src="../sketchnote/Dhcp.svg" /></a></p>
+<p>但大多数时候，这种动态 IP 地址分配（DHCP）工作得非常完美。你打开笔记本电脑，几秒钟后就可以连接并使用互联网。然后你合上笔记本电脑，前往不同的地点，并在该位置获得一个不同的 IP 地址。</p>
+<p>在某些操作系统中，当计算机连接到网络时，如果发出 DHCP 请求而没有收到回复，它会决定自己分配一个 IP 地址。这些自分配的地址通常以“169....”开头。当你的计算机拥有这些自分配的 IP 地址时，它认为自己已连接到网络并拥有 IP 地址，但没有网关，它无法将数据包路由到本地网络或互联网。最好的结果是一些计算机可以连接到本地网络，相互发现并进行网络游戏。对于这些自分配的 IP 地址，其他功能并不多。</p>
+</div>
+<div class="tabbed-block">
+<p>Increasingly, computers are portable or mobile. We just pointed out how important it was for the IP layer to track large groups of computers using network numbers instead of tracking every single computer individually. But since these network numbers indicate a particular physical connection to the network, when we move a computer from one location to another, it will need a new IP address. Remember that the link layer address is set when a computer is manufactured and never changes throughout the life of the computer. If you close your laptop in one coffee shop and reopen it using your home WiFi, your computer will need a different IP address.</p>
+<p>This ability for your computer to get a different IP address when it is moved from one network to another uses a protocol called "Dynamic Host Configuration Protocol" (or DHCP for short).  DHCP is pretty simple. Going back to the Link layer section, recall the first thing your computer does at the link level is ask "Is there a base station on this network?" by sending a message to a special broadcast address. Once your computer is successfully connected at the link layer through that base station, it sends another broadcast message, this time asking "Is there a gateway connected to this network that can get me to the Internet? If there is, tell me your IP address and tell me what IP address I should use on this network".</p>
+<p>When the gateway router replies, your computer is given a temporary IP address to use on that network (for instance, while you are at the coffee shop). After the router has not heard from your computer for a while, it decides you are gone and loans the IP address to another computer.</p>
+<p>If this process of reusing a loaned IP address goes wrong, two computers end up on the same network with the same IP address. Perhaps you have seen a message on your computer to the effect of, "Another computer is using 192.168.0.5, we have stopped using this address". Your computer sees another computer with a link address other than its own using the IP address that your computer thinks is assigned to it.</p>
+<p><a class="glightbox" href="../sketchnote/Dhcp.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Getting an IP Address via DHCP" src="../sketchnote/Dhcp.svg" /></a></p>
+<p>But most of the time this dynamic IP address assignment (DHCP) works perfectly. You open your laptop and in a few seconds you are connected and can use the Internet. Then you close your laptop and go to a different location and are given a different IP address to use at that location.</p>
+<p>In some operating systems, when a computer connects to a network, issues a DHCP request, and receives no answer, it decides to assign itself an IP address anyway. Often these self-assigned addresses start with "169....".  When your computer has one of these self-assigned IP addresses, it thinks it is connected to a network and has an IP address, but without a gateway, it has no possibility of getting packets routed across the local network and onto the Internet. The best that can be done is that a few computers can connect to a local network, find each other, and play a networked game. There is not much else that can be done with these self-assigned IP addresses.</p>
+</div>
+</div>
+</div>
+<h2 id="一种不同的地址重用方式">一种不同的地址重用方式<a class="headerlink" href="#一种不同的地址重用方式" title="Permanent link">&para;</a></h2>
+<p><strong>A Different Kind of Address Reuse</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">中文</label><label for="__tabbed_7_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>如果你知道如何在笔记本电脑上查找 IP 地址，你可以进行一个小实验，看看在不同位置获得的不同 IP 地址。如果你列出在不同地点接收到的地址，你可能会发现许多地方分配的地址前缀为“192.168。”这似乎违反了网络号（IP 地址前缀）与计算机连接到互联网的位置相关的规则，但针对以“192.168.”开头的地址适用另一条规则（前缀“10.”也是特殊的）。</p>
+<p>以“192.168.”开头的地址被称为“非可路由”地址。这意味着它们永远不会作为真实地址在网络核心中路由数据。它们可以在单个本地网络中使用，但不能在全球网络上使用。</p>
+<p>那么，为什么你的计算机在家用网络上能获得像“192.168.0.5”这样的地址，并且在整体互联网中运行得很好呢？这是因为你的家用路由器/网关/基站正在进行一种我们称之为“网络地址转换”（NAT）的操作。网关有一个可路由的单一 IP 地址，它在多个连接到网关的工作站之间共享。你的计算机使用其非可路由地址（如“192.168.0.5”）发送数据包，但当数据包经过网关时，网关会将地址替换为其实际的可路由地址。当数据包返回到你的工作站时，路由器会将你的工作站的非可路由地址放回返回的数据包中。</p>
+<p>这种方法使我们能够节省真实的可路由地址，并对从一个网络移动到另一个网络的工作站重复使用相同的非可路由地址。</p>
+</div>
+<div class="tabbed-block">
+<p>If you know how to find the IP address on your laptop, you can do a little experiment and look at the different IP addresses you get at different locations. If you made a list of the different addresses you received at the different locations, you might find that many of the locations give out addresses with a prefix of "192.168.". This seems to be a violation of the rule that the network number (IP address prefix) is tied to the place where the computer is connected to the Internet, but a different rule applies to addresses that start with "192.168." (The prefix "10." is also special).</p>
+<p>Addresses that start with "192.168." are called "non-routable" addresses. This means that they will never be used as real addresses that will route data across the core of the network. They can be used within a single local network, but not used on the global network.</p>
+<p>So then how is it that your computer gets an address like "192.168.0.5" on your home network and it works perfectly well on the overall Internet?  This is because your home router/gateway/base station is doing something we call "Network Address Translation", or "NAT". The gateway has a single routable IP address that it is sharing across multiple workstations that are connected to the gateway. Your computer uses its non-routable address like "192.168.0.5" to send its packets, but as the packets move across the gateway, the gateway replaces the address with its actual routable address. When packets come back to your workstation, the router puts your workstation's non-routable address back into the returning packets.</p>
+<p>This approach allows us to conserve the real routable addresses and use the same non-routable addresses over and over for workstations that move from one network to another.</p>
+</div>
+</div>
+</div>
+<h2 id="全球-ip-地址分配">全球 IP 地址分配<a class="headerlink" href="#全球-ip-地址分配" title="Permanent link">&para;</a></h2>
+<p><strong>Global IP Address Allocation</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">中文</label><label for="__tabbed_8_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>如果你想将一个新组织的网络连接到互联网，你需要联系一个互联网服务提供商（ISP）并建立连接。你的 ISP 会给你分配一系列 IP 地址（即一个或多个网络号），这些地址可以分配给连接到你网络的计算机。ISP 通过将其从更高级别的互联网服务提供商那里收到的一部分网络号分配给你来为你分配网络号。</p>
+<p>在 IP 地址分配的顶层，有五个区域互联网注册机构（RIRs）。这五个注册机构为一个主要的地理区域分配 IP 地址。在这五个注册机构之间，世界上每个地方都可以被分配一个网络号。这五个注册机构分别是北美（ARIN）、南美和中美洲（LACNIC）、欧洲（RIPE NCC）、亚太地区（APNIC）和非洲（AFRNIC）。</p>
+<p>当经典的 IPv4 地址如“212.78.1.25”被发明时，连接到互联网的计算机仅有几千台。那时我们从未想过有一天会有十亿台计算机连接到互联网。但今天，随着互联网的扩展以及“物联网”的兴起，智能汽车、冰箱、温控器甚至灯具都需要 IP 地址，我们需要连接的计算机数量远超过十亿。为了使这些新计算机能够连接到互联网，工程师们设计了一种新的互联网协议，称为“IPv6”。128 位的 IPv6 地址比 32 位的 IPv4 地址要长得多。</p>
+<p>区域互联网注册机构（RIRs）正在引领从 IPv4 到 IPv6 的过渡。IPv4 到 IPv6 的过渡将需要很多年。在此期间，IPv4 和 IPv6 必须无缝协作。</p>
+</div>
+<div class="tabbed-block">
+<p>If you wanted to connect the network for a new organization to the Internet you would need to contact an Internet Service Provider and make a connection. Your ISP would give you a range of IP addresses (i.e., one or more network numbers) that you could allocate to the computers attached to your network. The ISP assigns you network numbers by giving you a portion of the network numbers they received from a higher-level Internet Service Provider.</p>
+<p>At the top level of IP address allocations are five Regional Internet Registries (RIRs). Each of the five registries allocates IP addresses for a major geographic area. Between the five registries, every location in the world can be allocated a network number. The five registries are North America (ARIN), South and Central America (LACNIC), Europe (RIPE NCC), Asia-Pacific (APNIC) and Africa (AFRNIC).</p>
+<p>When the classic IPv4 addresses like "212.78.1.25" were invented, only a few thousand computers were connected to the Internet. We never imagined then that someday we would have a billion computers on the Internet. But today with the expansion of the Internet and the "Internet of things" where smart cars, refrigerators, thermostats, and even lights will need IP addresses, we need to connect far more than a billion computers to the Internet. To make it possible to connect all these new computers to the Internet, engineers have designed a new generation of the Internet Protocol called "IPv6". The 128-bit IPv6 addresses are much longer than the 32-bit IPv4 addresses.</p>
+<p>The Regional Internet Registries (RIRs) are leading the transition from IPv4 to IPv6. The transition from IPv4 to IPv6 will take many years. During that time, both IPv4 and IPv6 must work seamlessly together.</p>
+</div>
+</div>
+</div>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p><strong>Summary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">中文</label><label for="__tabbed_9_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>互联网协议层将我们的网络从单一的跳转（链接层）扩展到一系列跳转，从而使数据包能够快速且高效地从你的计算机路由到目标 IP 地址，然后再返回到你的计算机。IP 层的设计旨在应对网络故障，并在数十亿台计算机之间维护接近理想的路由路径，而无需任何中央路由清算所。每个路由器都学习其在整个网络中的位置，并通过与邻近路由器的合作，有效地在互联网中转发数据包。</p>
+<p>IP 层并不是 100% 可靠的。数据包可能因为短暂的故障而丢失，或者因为网络在某个时刻对数据包的路径感到“困惑”。你的系统稍后发送的数据包可能会找到更快的网络路径，甚至在你系统之前发送的数据包之前到达。</p>
+<p>设计一个 IP 层，使其永远不丢失数据包并确保数据包按顺序到达，虽然看起来很诱人，但这几乎不可能处理如此多系统连接所涉及的极端复杂性。</p>
+<p>因此，我们不对 IP 层要求过多，而是将数据包丢失和数据包到达顺序错误的问题留给上层的传输层处理。</p>
+</div>
+<div class="tabbed-block">
+<p>The Internetworking Protocol layer extends our network from a single hop (Link layer) to a series of hops that result in packets quickly and efficiently being routed from your computer to a destination IP address and back to your computer. The IP layer is designed to react and route around network outages and maintain near-ideal routing paths for packets moving between billions of computers without any kind of central routing clearinghouse. Each router learns its position within the overall network, and by cooperating with its neighboring routers helps move packets effectively across the Internet.</p>
+<p>The IP layer is not 100% reliable. Packets can be lost due to momentary outages or because the network is momentarily "confused" about the path that a packet needs to take across the network. Packets that your system sends later can find a quicker route through the network and arrive before packets that your system sent earlier.</p>
+<p>It might seem tempting to design the IP layer so that it never loses packets and insures that packets arrive in order, but this would make it nearly impossible for the IP layer to handle the extreme complexities involved in connecting so many systems.</p>
+<p>So instead of asking too much of the IP layer, we leave the problem of packet loss and packets that arrive out of order to our next layer up, the Transport layer.</p>
+</div>
+</div>
+</div>
+<h2 id="术语">术语<a class="headerlink" href="#术语" title="Permanent link">&para;</a></h2>
+<p><strong>Glossary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">中文</label><label for="__tabbed_10_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>核心路由器</strong>：在互联网核心中转发流量的路由器。</p>
+<p><strong>DHCP</strong>：动态主机配置协议。DHCP 是便携式计算机在移动到新位置时获取 IP 地址的方式。</p>
+<p><strong>边缘路由器</strong>：提供本地网络与互联网连接的路由器。等同于“网关”。</p>
+<p><strong>主机标识符</strong>：IP 地址中用于识别本地网络内计算机的部分。</p>
+<p><strong>IP 地址</strong>：分配给计算机的全球唯一地址，以便它可以与其他具有 IP 地址并连接到互联网的计算机进行通信。为了简化互联网核心中的路由，IP 地址被划分为网络号和主机标识符。一个例子的 IP 地址可能是“212.78.1.25”。</p>
+<p><strong>NAT</strong>：网络地址转换。这种技术允许多个计算机在单个本地网络上共享一个全球 IP 地址。</p>
+<p><strong>网络号</strong>：IP 地址中用于识别计算机连接到哪个本地网络的部分。</p>
+<p><strong>数据包漩涡</strong>：由于路由表中的错误，数据包进入无限循环的错误情况。</p>
+<p><strong>RIR</strong>：区域互联网注册机构。五个 RIR 大致对应于世界各大洲，负责为全球主要地理区域分配 IP 地址。</p>
+<p><strong>路由表</strong>：每个路由器维护的信息，跟踪每个网络号应使用哪个出站链接。</p>
+<p><strong>生存时间 (TTL)</strong>：存储在每个数据包中的一个数字，在数据包通过每个路由器时减少 1。当 TTL 达到零时，数据包被丢弃。</p>
+<p><strong>traceroute</strong>：在许多 Linux/UNIX 系统上可用的命令，尝试映射数据包从源到目标的路径。在 Windows 系统上可能称为“tracert”。</p>
+<p><strong>双连通网络</strong>：在网络中，任意两个节点之间至少存在两条可能路径的情况。双连通网络可以在不丧失整体连通性的情况下失去任意单一链接。</p>
+</div>
+<div class="tabbed-block">
+<p><strong>core router</strong>: A router that is forwarding traffic within the core of the  Internet.  </p>
+<p><strong>DHCP</strong>: Dynamic Host Configuration Protocol. DHCP is how a portable computer gets an IP address when it is moved to a new location.</p>
+<p><strong>edge router</strong>: A router which provides a connection between a local network and the Internet.  Equivalent to "gateway".</p>
+<p><strong>Host Identifier</strong>: The portion of an IP address that is used to  identify a computer within a local area network.</p>
+<p><strong>IP Address</strong>: A globally assigned address that is assigned to a computer so that it can communicate with other computers that have IP addresses and are connected to the Internet.  To simplify routing in the core of the Internet IP addresses are broken into Network Numbers and Host Identifiers.  An example IP address might be "212.78.1.25".</p>
+<p><strong>NAT</strong>: Network Address Translation. This technique allows a single global  IP address to be shared by many computers on a single local area network.</p>
+<p><strong>Network Number</strong>: The portion of an IP address that is used to identify which local network the computer is connected to.</p>
+<p><strong>packet vortex</strong>: An error situation where a packet gets into an infinite  loop because of errors in routing tables.</p>
+<p><strong>RIR</strong>: Regional Internet Registry. The five RIRs roughly correspond  to the continents of the world and allocate IP address  for the major geographical areas of the world.</p>
+<p><strong>routing tables</strong>: Information maintained by each router that keeps track  of which outbound link should be used for each network number.</p>
+<p><strong>Time To Live (TTL)</strong>: A number that is stored in every packet that  is reduced by one as the packet passes through each router.  When the TTL reaches zero, the packet is discarded.</p>
+<p><strong>traceroute</strong>: A command that is available on many Linux/UNIX systems that  attempts to map the path taken by a packet as it moves from its source to its destination.  May be called "tracert" on Windows systems.</p>
+<p><strong>two-connected network</strong>: A situation where there is at least two possible paths between any pair of nodes in a network.  A two-connected network can  lose any single link without losing overall connectivity.</p>
+</div>
+</div>
+</div>
+<h2 id="问题">问题<a class="headerlink" href="#问题" title="Permanent link">&para;</a></h2>
+<p><strong>Questions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">中文</label><label for="__tabbed_11_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>你可以在 <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a> 在线参加这个测验。</p>
+<ol>
+<li>
+<p>Internetworking 层的目标是什么？</p>
+<p>a) 将数据包从源计算机通过多个跳转传输到目标计算机</p>
+<p>b) 在单一物理连接上移动数据包</p>
+<p>c) 处理网络服务器故障转移</p>
+<p>d) 处理敏感数据的加密</p>
+</li>
+<li>
+<p>在互联网中，典型的数据包从源到目标要跨越多少个不同的物理链接？</p>
+<p>a) 1</p>
+<p>b) 4</p>
+<p>c) 15</p>
+<p>d) 255</p>
+</li>
+<li>
+<p>以下哪项是 IP 地址？</p>
+<p>a) 0f:2a:b3:1f:b3:1a</p>
+<p>b) 192.168.3.14</p>
+<p>c) www.khanacademy.com</p>
+<p>d) @drchuck</p>
+</li>
+<li>
+<p>为什么必须从 IPv4 迁移到 IPv6？</p>
+<p>a) 因为 IPv6 拥有更小的路由表</p>
+<p>b) 因为 IPv6 减少了数据包必须跨越的跳数</p>
+<p>c) 因为 IPv4 地址即将用尽</p>
+<p>d) 因为 IPv6 地址由网络硬件制造商选择</p>
+</li>
+<li>
+<p>网络号是什么？</p>
+<p>a) 拥有相同前缀的一组 IP 地址</p>
+<p>b) 特定局域网的 GPS 坐标</p>
+<p>c) 数据包跨越网络所需的跳数</p>
+<p>d) 数据包在跨越网络时所经历的总体延迟</p>
+</li>
+<li>
+<p>在网络号 "218.78" 内可以有多少台计算机？</p>
+<p>a) 650</p>
+<p>b) 6500</p>
+<p>c) 65000</p>
+<p>d) 650000</p>
+</li>
+<li>
+<p>路由器如何确定数据包在互联网中的传输路径？</p>
+<p>a) 路由由 IRG（互联网路由组）控制</p>
+<p>b) 每个路由器根据其对正确出站链接的最佳猜测查看数据包并进行转发</p>
+<p>c) 每个路由器将所有数据包发送到每个出站链接（洪泛算法）</p>
+<p>d) 每个路由器会保存数据包，直到目标计算机发送数据包进来</p>
+</li>
+<li>
+<p>路由表是什么？</p>
+<p>a) 映射到链接地址的 IP 地址列表</p>
+<p>b) 映射到 GPS 坐标的 IP 地址列表</p>
+<p>c) 映射到 GPS 坐标的网络号列表</p>
+<p>d) 映射到路由器出站链接的网络号列表</p>
+</li>
+<li>
+<p>新连接的路由器如何填充其路由表？</p>
+<p>a) 咨询 IANA（互联网分配号码管理局）</p>
+<p>b) 下载路由 RFC（请求评论）</p>
+<p>c) 联系互联网工程任务组（IETF）</p>
+<p>d) 询问邻近路由器它们如何路由数据包</p>
+</li>
+<li>
+<p>当物理链接出现故障时，路由器会做什么？</p>
+<p>a) 丢弃该链接的所有路由表条目</p>
+<p>b) 咨询互联网地图（IMAP）服务</p>
+<p>c) 进行域名（DNS）查询以获取 IP 地址</p>
+<p>d) 将该链接的所有数据包发送回源计算机</p>
+</li>
+<li>
+<p>为什么至少拥有一个“二连通”网络是好的？</p>
+<p>a) 因为路由表要小得多</p>
+<p>b) 因为它消除了对网络号的需求</p>
+<p>c) 因为它支持更多的 IPv4 地址</p>
+<p>d) 因为即使失去单一链接，它仍然可以正常工作</p>
+</li>
+<li>
+<p>消息中的所有数据包是否都采用相同的路由跨越互联网？</p>
+<p>a) 是</p>
+<p>b) 否</p>
+</li>
+<li>
+<p>路由器如何发现新路由并改善其路由表？</p>
+<p>a) 每天午夜下载一张新的互联网地图</p>
+<p>b) 定期询问邻近路由器它们的网络表</p>
+<p>c) 随机丢弃数据包以触发互联网中的错误修正代码</p>
+<p>d) 从目标计算机获取传输速度数据</p>
+</li>
+<li>
+<p>数据包中的“生存时间”字段的目的是什么？</p>
+<p>a) 确保数据包不会陷入“无限循环”</p>
+<p>b) 跟踪数据包通过网络所需的分钟数</p>
+<p>c) 维护网络号与 GPS 坐标之间的映射</p>
+<p>d) 告诉路由器特定数据包的正确输出链接</p>
+</li>
+<li>
+<p>“traceroute”命令是如何工作的？</p>
+<p>a) 发送一系列低 TTL 值的数据包，以便获取数据包被丢弃的位置</p>
+<p>b) 从互联网地图（IMAP）加载网络路由</p>
+<p>c) 联系域名服务器以获取特定网络号的路由</p>
+<p>d) 询问路由器在数据包从源到目标传输时附加路由信息</p>
+</li>
+<li>
+<p>数据包通过海底光纤电缆横穿太平洋大约需要多长时间？</p>
+<p>a) 0.0025 秒</p>
+<p>b) 0.025 秒</p>
+<p>c) 0.250 秒</p>
+<p>d) 2.5 秒</p>
+</li>
+<li>
+<p>在 WiFi 网络中，计算机如何获取互联网协议（IP）地址？</p>
+<p>a) 使用 DHCP 协议</p>
+<p>b) 使用 DNS 协议</p>
+<p>c) 使用 HTTP 协议</p>
+<p>d) 使用 IMAP 协议</p>
+</li>
+<li>
+<p>网络地址转换（NAT）是什么？</p>
+<p>a) 查找与文本名称（如“www.dr-chuck.com”）相关联的 IP 地址</p>
+<p>b) 允许 IPv6 流量通过 IPv4 网络</p>
+<p>c) 查找特定路由器和网络号的最佳出站链接</p>
+<p>d) 在多个位置的多个网络网关之间重用像“192.168”这样的特殊网络号</p>
+</li>
+<li>
+<p>IP 地址和网络号是如何在全球范围内管理的？</p>
+<p>a) 有五个顶级注册机构在五个地理区域管理网络号</p>
+<p>b) IP 地址在全球范围内随机分配，类似彩票</p>
+<p>c) IP 地址由网络设备制造商分配</p>
+<p>d) IP 地址基于 GPS 坐标</p>
+</li>
+<li>
+<p>IPv6 地址比 IPv4 地址大多少？</p>
+<p>a) 大小相同</p>
+<p>b) IPv6 地址比 IPv4 地址大 50%</p>
+<p>c) IPv6 地址是 IPv4 地址的两倍</p>
+<p>d) IPv6 地址是 IPv4 地址的 10 倍</p>
+</li>
+<li>
+<p>当计算机收到以“169..”开头的 IP 地址时，这意味着什么？</p>
+<p>a) 你的互联网连接支持多播协议</p>
+<p>b) 网关正在使用 NAT 将你的本地地址映射到全球地址</p>
+<p>c) 没有可用的网关可以将你的数据包转发到互联网</p>
+<p>d) 该网络的网关是一个低速网关，具有较小的窗口大小</p>
+</li>
+<li>
+<p>如果你在波兰创办一家互联网服务提供商，哪个区域互联网注册机构（RIR）会分配给你一块 IP 地址？</p>
+<p>a) ARIN</p>
+<p>b) LACNIC</p>
+<p>c) RIPE NCC</p>
+<p>d) APNIC</p>
+<p>e) AFRNIC</p>
+<p>f) 联合国</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>You can take this quiz online at <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>What is the goal of the Internetworking layer?</p>
+<p>a) Move packets across multiple hops from a source to destination computer</p>
+<p>b) Move packets across a single physical connection</p>
+<p>c) Deal with web server failover</p>
+<p>d) Deal with encryption of sensitive data</p>
+</li>
+<li>
+<p>How many different physical links does a typical packet cross from  its source to its destination on the Internet?</p>
+<p>a) 1</p>
+<p>b) 4</p>
+<p>c) 15</p>
+<p>d) 255</p>
+</li>
+<li>
+<p>Which of these is an IP address?</p>
+<p>a) 0f:2a:b3:1f:b3:1a</p>
+<p>b) 192.168.3.14</p>
+<p>c) www.khanacademy.com</p>
+<p>d) @drchuck</p>
+</li>
+<li>
+<p>Why is it necessary to move from IPv4 to IPv6?</p>
+<p>a) Because IPv6 has smaller routing tables</p>
+<p>b) Because IPv6 reduces the number of hops a packet must go across</p>
+<p>c) Because we are running out of IPv4 addresses</p>
+<p>d) Because IPv6 addresses are chosen by network hardware manufacturers</p>
+</li>
+<li>
+<p>What is a network number?</p>
+<p>a) A group of IP addresses with the same prefix</p>
+<p>b) The GPS coordinates of a particular LAN</p>
+<p>c) The number of hops it takes for a packet to cross the network</p>
+<p>d) The overall delay packets experience crossing the network</p>
+</li>
+<li>
+<p>How many computers can have addresses within network number "218.78"?</p>
+<p>a) 650</p>
+<p>b) 6500</p>
+<p>c) 65000</p>
+<p>d) 650000</p>
+</li>
+<li>
+<p>How do routers determine the path taken by a packet across the Internet?</p>
+<p>a) The routes are controlled by the IRG (Internet Routing Group)</p>
+<p>b) Each router looks at a packet and forwards it based on its best guess  as to the correct outbound link</p>
+<p>c) Each router sends all packets on every outbound link (flooding algorithm)</p>
+<p>d) Each router holds on to a packet until a packet comes in from the  destination computer</p>
+</li>
+<li>
+<p>What is a routing table?</p>
+<p>a) A list of IP addresses mapped to link addresses</p>
+<p>b) A list of IP addresses mapped to GPS coordinates</p>
+<p>c) A list of network numbers mapped to GPS coordinates</p>
+<p>d) A list of network numbers mapped to outbound links from the router</p>
+</li>
+<li>
+<p>How does a newly connected router fill its routing tables?</p>
+<p>a) By consulting the IANA (Internet Assigned Numbers Authority)</p>
+<p>b) By downloading the routing RFC (Request for Comments)</p>
+<p>c) By contacting the Internet Engineering Task Force (IETF)</p>
+<p>d) By asking neighboring routers how they route packets</p>
+</li>
+<li>
+<p>What does a router do when a physical link goes down?</p>
+<p>a) Throws away all of the routing table entries for that link</p>
+<p>b) Consults the Internet Map (IMAP) service</p>
+<p>c) Does a Domain Name (DNS) looking for the IP address</p>
+<p>d) Sends all the packets for that link back to the source computer</p>
+</li>
+<li>
+<p>Why is it good to have at least a "two-connected" network?</p>
+<p>a) Because routing tables are much smaller</p>
+<p>b) Because it removes the need for network numbers</p>
+<p>c) Because it supports more IPv4 addresses</p>
+<p>d) Because it continues to function even when a single link goes down</p>
+</li>
+<li>
+<p>Do all packets from a message take the same route across the Internet?</p>
+<p>a) Yes</p>
+<p>b) No</p>
+</li>
+<li>
+<p>How do routers discover new routes and improve their routing tables?</p>
+<p>a) Each day at midnight they download a new Internet map from IMAP</p>
+<p>b) They periodically ask neighboring routers for their network tables</p>
+<p>c) They randomly discard packets to trigger error-correction code within the Internet</p>
+<p>d) They are given transmission speed data by destination computers</p>
+</li>
+<li>
+<p>What is the purpose of the "Time to Live" field in a packet?</p>
+<p>a) To make sure that packets do not end up in an "infinite loop"</p>
+<p>b) To track how many minutes it takes for a packet to get through the network</p>
+<p>c) To maintain a mapping between network numbers and GPS coordinates</p>
+<p>d) To tell the router the correct output link for a particular packet</p>
+</li>
+<li>
+<p>How does the "traceroute" command work?</p>
+<p>a) It sends a series of packets with low TTL values so it can get a  picture of where the packets get dropped</p>
+<p>b) It loads a network route from the Internet Map (IMAP)</p>
+<p>c) It contacts a Domain Name Server to get the route for a  particular network number</p>
+<p>d) It asks routers to append route information to a packet as it is  routed from source to destination</p>
+</li>
+<li>
+<p>About how long does it take for a packet to cross the Pacific Ocean via an undersea fiber optic cable?</p>
+<p>a) 0.0025 Seconds</p>
+<p>b) 0.025 Seconds</p>
+<p>c) 0.250 Seconds</p>
+<p>d) 2.5 Seconds</p>
+</li>
+<li>
+<p>On a WiFi network, how does a computer get an Internetworking (IP) address?</p>
+<p>a) Using the DHCP protocol</p>
+<p>b) Using the DNS protocol</p>
+<p>c) Using the HTTP protocol</p>
+<p>d) Using the IMAP protocol</p>
+</li>
+<li>
+<p>What is Network Address Translation (NAT)?</p>
+<p>a) It looks up the IP address associated with text names  like "www.dr-chuck.com"</p>
+<p>b) It allows IPv6 traffic to go across IPv4 networks</p>
+<p>c) It looks up the best outbound link for a particular router  and network number</p>
+<p>d) It reuses special network numbers like "192.168" across multiple network gateways at multiple locations</p>
+</li>
+<li>
+<p>How are IP addresses and network numbers managed globally?</p>
+<p>a) There are five top-level registries that manage network numbers in  five geographic areas</p>
+<p>b) IP addresses are assigned worldwide randomly in a lottery</p>
+<p>c) IP addresses are assigned by network equipment manufacturers</p>
+<p>d) IP addresses are based on GPS coordinates</p>
+</li>
+<li>
+<p>How much larger are IPv6 addresses than IPv4 addresses?</p>
+<p>a) They are the same size</p>
+<p>b) IPv6 addresses are 50% larger than IPv4 addresses</p>
+<p>c) IPv6 addresses are twice as large as IPv4 addresses</p>
+<p>d) IPv6 addresses are 10 times larger than IPv4 addresses</p>
+</li>
+<li>
+<p>What does it mean when your computer receives an IP address that starts with "169.."?</p>
+<p>a) Your connection to the Internet supports the Multicast protocol</p>
+<p>b) The gateway is mapping your local address to a global address using NAT</p>
+<p>c) There was no gateway available to forward your packets to the Internet</p>
+<p>d) The gateway for this network is a low-speed gateway with a small window size</p>
+</li>
+<li>
+<p>If you were starting an Internet Service Provider in Poland, which Regional Internet Registry (RIR) would assign you a block of IP addresses.</p>
+<p>a) ARIN</p>
+<p>b) LACNIC</p>
+<p>c) RIPE NCC</p>
+<p>d) APNIC</p>
+<p>e) AFRNIC</p>
+<p>f) United Nations</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月20日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月19日</span>
+      
+    
+  </small>
+</div>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.tabs.link", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.prune", "navigation.instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.94c44541.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

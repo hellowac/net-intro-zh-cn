@@ -1,0 +1,1351 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac-类型检查">
+      
+      
+      
+      
+        <link rel="prev" href="../c7/">
+      
+      
+        <link rel="next" href="../c9/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
+    
+    
+      
+        <title>安全传输层 - 网络技术简介-中文版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bd3936ea.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#安全传输层" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+你当前浏览的版本已不是最新版本，
+<a href="./..">
+    <strong>点击这里</strong>
+</a>查看最新版本的文档
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="网络技术简介-中文版" class="md-header__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            网络技术简介-中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              安全传输层
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c1/" class="md-tabs__link">
+        
+  
+    
+  
+  简介
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c2/" class="md-tabs__link">
+        
+  
+    
+  
+  网络架构
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c3/" class="md-tabs__link">
+        
+  
+    
+  
+  链路层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c4/" class="md-tabs__link">
+        
+  
+    
+  
+  网络层（IP）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c5/" class="md-tabs__link">
+        
+  
+    
+  
+  域名系统
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c6/" class="md-tabs__link">
+        
+  
+    
+  
+  传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c7/" class="md-tabs__link">
+        
+  
+    
+  
+  应用层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  安全传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c9/" class="md-tabs__link">
+        
+  
+    
+  
+  OSI 模型
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c10/" class="md-tabs__link">
+        
+  
+    
+  
+  总结
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project_links/" class="md-tabs__link">
+        
+  
+    
+  
+  项目链接
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="网络技术简介-中文版" class="md-nav__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    网络技术简介-中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络架构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链路层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络层（IP）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    域名系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    应用层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    安全传输层
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    安全传输层
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#加密和解密数据" class="md-nav__link">
+    加密和解密数据
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#两种加密方式" class="md-nav__link">
+    两种加密方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#安全套接层ssl" class="md-nav__link">
+    安全套接层（SSL）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#加密网页浏览器流量" class="md-nav__link">
+    加密网页浏览器流量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#证书和证书授权" class="md-nav__link">
+    证书和证书授权
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSI 模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目链接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#加密和解密数据" class="md-nav__link">
+    加密和解密数据
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#两种加密方式" class="md-nav__link">
+    两种加密方式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#安全套接层ssl" class="md-nav__link">
+    安全套接层（SSL）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#加密网页浏览器流量" class="md-nav__link">
+    加密网页浏览器流量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#证书和证书授权" class="md-nav__link">
+    证书和证书授权
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="安全传输层">安全传输层<a class="headerlink" href="#安全传输层" title="Permanent link">&para;</a></h1>
+<p><strong>Secure Transport Layer</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">中文</label><label for="__tabbed_1_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在互联网的早期，网络规模较小，所有路由器都位于安全的位置。只要每台连接到互联网的计算机能保护自己免受不必要的入侵，就认为在数据传输过程中没有必要保护数据免受窥探。</p>
+<p>因此，链路层、互联网层和传输层专注于数据的高效移动，解决大规模共享分布式网络中的问题，而不考虑数据的隐私。</p>
+<p>但是，随着互联网在1980年代末的快速增长，以及在1994年网络成为主流时的爆炸性发展，网络流量的安全性和隐私性变得非常重要。当我们开始使用互联网进行商务交易，并且信用卡和银行账户号码频繁在网络上传输时，数据的安全性变得至关重要。当我们开始使用无线技术（如 WiFi）时，甚至在最简单的互联网使用中，安全性也变得必要。</p>
+<p>保护网络活动有两种普遍的方法。第一种是确保所有网络硬件（路由器和链路）都处于物理安全的位置，这样就无法让人潜入并监控网络流量。然而，这种方法对成千上万由不同组织拥有和运营的网络路由器来说并不实际。虽然你可能能够确保某些路由器运营商遵循严格的安全程序和政策，但总会出现失误。而一旦 WiFi 加入到这个组合中，数据包通过无线电波传输，网络攻击者就可以坐在咖啡店里截获经过空气的数据包。</p>
+<p>在这种情况下，唯一合理的解决方案是在计算机内部对数据进行加密，然后再通过第一个物理链接发送，在数据到达目标计算机后再进行解密。使用这种方法，我们假设攻击者可以看到你发送的所有数据包，但无法解密他们捕获的数据。加密还确保了在数据穿越互联网时没有办法篡改你的数据。</p>
+</div>
+<div class="tabbed-block">
+<p>In the early days of the Internet, networks were small and all of the routers were in secure locations. As long as each computer connected to the Internet protected itself from unwanted incoming connections, it was felt that there was no need to protect data from prying eyes while it was crossing the network.</p>
+<p>So the Link, Internetwork, and Transport layers were focused on the efficient movement of data and solving the problems of a large-scale shared distributed network without worrying about the privacy of that data.</p>
+<p>But as the use of the Internet grew rapidly in the late 1980s and literally exploded when the Web became mainstream in 1994, security and privacy of network traffic became very important problems to solve. When we began using the Internet to conduct commerce and credit cards and bank account numbers were being routinely sent across the network, securing data became essential. And when we started using wireless technologies like WiFi, security became necessary for even the simplest uses of the Internet.</p>
+<p>There are two general approaches to securing network activity. The first makes sure that all of the network hardware (routers and links) is in physically secure locations so it is not possible for someone to sneak in and monitor traffic while it is crossing the Internet. This approach is not practical for hundreds of thousands of network routers owned and operated by many different organizations. While you might be able to ensure that some of the router operators adhered to strict security procedures and policies, sooner or later a mistake will be made. And once WiFi was added to the mix and your packets went over radio waves, a network attacker could just sit in a coffee shop and intercept packets as they passed through the air.</p>
+<p>Under these conditions, the only reasonable solution is to encrypt data in your computer before it is sent across its first physical link, and then decrypt the data in the destination computer after it arrives. Using this approach, we assume that an attacker can see all of the packets that you send, but they cannot decrypt the data that they have captured. The encryption also guarantees that there is no way to alter your data while it is crossing the Internet.</p>
+</div>
+</div>
+</div>
+<h2 id="加密和解密数据">加密和解密数据<a class="headerlink" href="#加密和解密数据" title="Permanent link">&para;</a></h2>
+<p><strong>Encrypting and Decrypting Data</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">中文</label><label for="__tabbed_2_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>保护信息以防止其在不安全的媒介上传输时被读取的概念已有数千年历史。罗马军队的指挥官们使用一种称为“凯撒密码”的编码方法相互发送密信。这种方法的最简单版本是将实际消息中的每个字符（我们称之为“明文”）向字母表中固定距离移动，从而生成混淆后的消息或“密文”。</p>
+<p>然后，我们通过信使或其他不安全的运输方式将密文发送给对方。信使无法读取消息，因为它看起来像是随机字符，除非知道用于编码该消息的技术。</p>
+<p>只要接收消息的人知道用于移动消息的数字，他们就可以将编码消息中的字符进行还原，以重现原始消息。</p>
+<p>以下是一个简单的明文和密文的示例，使用的移动距离为1：</p>
+<div class="language-text highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>明文： Go to the river
+密文： Hp up uif sjwfs
+</code></pre></div>
+<p>我们用“加密”一词来描述将明文转换为密文的过程，用“解密”来描述反向过程。</p>
+<p>凯撒密码很容易被破解，但直到大约150年前，它仍被用来保护重要消息。现代加密技术远比简单的字符移动复杂，但所有加密系统都依赖于某种双方都知晓的秘密密钥，以便解密接收到的数据。</p>
+</div>
+<div class="tabbed-block">
+<p>The concept of protecting information so it cannot be read while it is being transported over an insecure medium is thousands of years old. The leaders in Roman armies sent coded messages to each other using a code called the "Caesar Cipher". The simplest version of this approach is to take each of the characters of the actual message (we call this "plain text") and shift each character a fixed distance down the alphabet to produce the scrambled message or "ciphertext".</p>
+<p>Then we send the ciphertext via the courier or other insecure transport to the other person. The courier cannot read the message because it appears to be random characters unless you know the technique used to encode the message.</p>
+<p>As long as the person receiving the message knew the number used to shift the message, they could unshift the characters in the encoded message to reproduce the original message.</p>
+<p>Here is a simple example of plain text and ciphertext using a shift of one:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Plain</span><span class="w"> </span><span class="nc">text</span><span class="err">:</span><span class="w">  </span><span class="k">Go</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">river</span>
+<span class="n">Cipher</span><span class="w"> </span><span class="nc">text</span><span class="err">:</span><span class="w"> </span><span class="n">Hp</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">uif</span><span class="w"> </span><span class="n">sjwfs</span>
+</code></pre></div>
+
+<p>We use the word "encrypt" to describe transforming the plain text to the ciphertext and "decrypt" to describe the reverse process.</p>
+<p>The Caesar Cipher is very simple to defeat, but it was used to protect important messages until about 150 years ago. Modern encryption techniques are far more sophisticated than a simple character shift, but all encryption systems depend on some kind of a secret key that both parties are aware of so they can decrypt received data.</p>
+</div>
+</div>
+</div>
+<h2 id="两种加密方式">两种加密方式<a class="headerlink" href="#两种加密方式" title="Permanent link">&para;</a></h2>
+<p><strong>Two Kinds of Secrets</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">中文</label><label for="__tabbed_3_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>传统的加密传输方式是使用一个共享秘密（一个密码、一个句子或一个数字），只有发送方和接收方知道。掌握这个秘密后，解密接收到的数据非常简单，但如果在没有这个秘密的情况下接收到数据，就几乎不可能解密该消息。</p>
+<p><a class="glightbox" href="../sketchnote/Shared_vs_Asymmetric.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Shared Versus Asymmetric Keys" src="../sketchnote/Shared_vs_Asymmetric.svg" /></a></p>
+<p>在互联网早期，两个人可以通过一个人先打电话给另一个人并告知他们解密秘密来相互发送加密邮件。这在网络用户较少时运作良好，但无法扩展到一个公司可能拥有数百万客户的情况，无法为每个客户拨打电话以建立共享秘密，才可以进行购买。</p>
+<p>虽然通过互联网分发共享秘密似乎是个好主意，但如果假设攻击者正在监视并捕获所有网络流量，他们也能捕获包含共享秘密的未加密消息。此时，攻击者使用共享秘密解密消息将变得轻而易举。而更糟糕的是，攻击者可以拦截一条消息，延迟它，然后解密、修改并重新加密，再将修改后的消息发送回去。接收计算机将解密该消息，而不会知道它在传输过程中被攻击者修改过。</p>
+<p>因此，显然共享秘密无法解决亿万对网络计算机之间保护网络流量的问题。</p>
+<p>解决这个问题的方案出现在1970年代，当时提出了非对称密钥加密的概念。非对称密钥加密的思路是使用一个密钥加密消息，另一个密钥用来解密。接收加密数据的计算机选择加密密钥和解密密钥。然后，加密密钥被发送给将要发送数据的计算机。发送计算机加密数据并通过网络发送。接收计算机使用解密密钥解密数据。</p>
+<p>我们称加密密钥为“公钥”，因为它可以被广泛分享。我们称解密密钥为“私钥”，因为它从不离开创建它的计算机。非对称密钥的另一种名称是公钥/私钥。</p>
+<p>整个过程的设计是，如果攻击者拥有公钥（未加密发送）和密文，那么几乎不可能解密加密数据。使用大质数的数学使得从公钥和密文中猜测私钥变得困难。</p>
+<p>因此，随着公钥/私钥技术的出现，剩下的唯一问题就是如何在我们的网络模型中应用它。</p>
+</div>
+<div class="tabbed-block">
+<p>The traditional way to encrypt transmissions is using a  shared secret (a password, a sentence, a number) that only the sending and receiving parties know. With the secret, it is easy to decrypt the received data, but if you received the data without possessing the secret, it would be effectively impossible to decrypt the message.</p>
+<p><a class="glightbox" href="../sketchnote/Shared_vs_Asymmetric.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Shared Versus Asymmetric Keys" src="../sketchnote/Shared_vs_Asymmetric.svg" /></a></p>
+<p>In the early days of the Internet, two people could send encrypted email to each other by one person first calling the other person on the phone and giving them the decryption secret. This worked well when there were only a few users on the network, but could not scale to situations where a company might have millions of customers and could not afford to make a phone call to each customer to establish a shared secret before they could make a purchase.</p>
+<p>It might seem like a good idea to distribute the shared secrets over the Internet, but if we assume that the attackers are monitoring and capturing all network traffic, they could also capture the unencrypted message that contained the shared secret.  At that point it would be trivial for the attacker to use the shared secret to decrypt a message. And even worse, the attacker could intercept a message, delay it, then decrypt it, change and re-encrypt it, and send the modified message back on its way.  The receiving computer would decrypt the message and never know that it had been modified by an attacker while in transit.</p>
+<p>So shared secrets clearly would not work to solve the problem of securing network traffic between trillions of pairs of networked computers.</p>
+<p>The solution to this problem came in the 1970s when the concept of asymmetric key encryption was developed. The idea of asymmetric key encryption is that one key is used to encrypt the message and another key is used to decrypt it. The computer that will be receiving the encrypted data chooses both the encryption key and decryption key. Then the encryption key is sent to the computer that will be sending the data. The sending computer encrypts the data and sends it across the network. The receiving computer uses the decryption key to decrypt the data.</p>
+<p>We call the encryption key the "public" key because it can be widely shared. We call the decryption key the "private" key because it never leaves the computer where it was created. Another name for asymmetric keys is public/private keys.</p>
+<p>The whole process is designed so that if an attacker has the public key (which was sent unencrypted) and the encrypted text, it is virtually impossible to decrypt the encrypted data. There is a lot of math with large prime numbers that makes it hard to guess the private key from the public key and encrypted data.</p>
+<p>So with the advent of public/private key technology, the only question left was how to apply it in our network model.</p>
+</div>
+</div>
+</div>
+<h2 id="安全套接层ssl">安全套接层（SSL）<a class="headerlink" href="#安全套接层ssl" title="Permanent link">&para;</a></h2>
+<p><strong>Secure Sockets Layer (SSL)</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">中文</label><label for="__tabbed_4_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>由于网络工程师在互联网协议开发近20年后才决定添加安全性，因此确保不破坏现有的互联网协议或架构变得十分重要。他们的解决方案是在传输层和应用层之间添加一个可选的部分层，称为安全套接字层（SSL）或传输层安全性（TLS）。</p>
+<p>当应用程序请求传输层与远程主机建立连接时，可以选择请求加密或不加密的连接。如果请求了加密连接，传输层将在将数据分解为数据包之前对其进行加密。这意味着，无论数据包是加密还是未加密，传输层、互联层和物理（链路）层仍然可以完全相同地执行其功能。同时，进行连接的应用程序也免去了了解加密和解密工作原理的细节。</p>
+<p>由于加密是对传输层的简单且透明的添加，因此无需更改在互联层和链路层上运行的路由器。也不需要更改任何链路层硬件以使加密生效。应用程序只需在适当时请求连接加密，无需进行其他修改。</p>
+</div>
+<div class="tabbed-block">
+<p>Since network engineers decided to add security nearly 20 years after the Internet protocols were developed, it was important not to break any existing Internet protocols or architecture. Their solution was to add an optional partial layer between the Transport layer and the Application layer. They called this partial layer the Secure Sockets Layer (SSL) or Transport Layer Security (TLS).</p>
+<p><a class="glightbox" href="../sketchnote/Encr_Decr.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Where Encryption and Decryption Happens" src="../sketchnote/Encr_Decr.svg" /></a></p>
+<p>When an application requested that the Transport layer make a connection to a remote host, it could request that the connection either be encrypted or unencrypted. If an encrypted connection was requested, the Transport layer encrypted the data before breaking the stream into packets. This meant that the Transport layer, Internetwork layer, and physical (link) layers could still perform exactly the same way whether the packets were encrypted or non-encrypted. The applications making the connections were also spared the details of how encryption and decryption worked.</p>
+<p>Since encryption was a simple and transparent addition to the Transport layer, there was no need to change the routers that operate at the Internetwork and Link layers. There was no need to change any Link layer hardware to make encryption work. And applications did not need to be modified except to request that a connection be encrypted when appropriate.</p>
+</div>
+</div>
+</div>
+<h2 id="加密网页浏览器流量">加密网页浏览器流量<a class="headerlink" href="#加密网页浏览器流量" title="Permanent link">&para;</a></h2>
+<p><strong>Encrypting Web Browser Traffic</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">中文</label><label for="__tabbed_5_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>由于网页浏览器和网页服务器在应用层操作，我们几乎不会注意到自己是在使用加密连接还是未加密连接。网页浏览器使用将“http:”替换为“https:”的URL约定，以指示浏览器应使用安全传输层与网页服务器通信，而不是未加密的传输层。您的浏览器通常会在地址栏中显示一个“锁”图标，以告诉您正在与安全网站进行通信。</p>
+<p>设置https连接时会有一些小的开销，以及加密和解密正在发送的数据时会产生小额成本。由于https的成本稍高，一段时间内它仅用于包含密码、银行账号或其他敏感数据的页面。</p>
+<p>但随着时间的推移，网络变得更快，https的实现变得更加高效，因此逐渐出现了在与您有账户的网页服务器进行交互时加密所有网页服务器交互的趋势。目前的趋势是对所有网页流量使用https。</p>
+</div>
+<div class="tabbed-block">
+<p>Since web browsers and web servers operate at the application layer, we barely notice whether we are using encrypted or unencrypted connections. Web browsers use the URL convention of replacing "http:" with "https:" to indicate that the browser is to communicate with the web server using the Secure Transport Layer instead of the unencrypted Transport layer.   Your browser will usually show a  "lock" icon in the address bar to let you know that you are communicating with a secure web site.</p>
+<p>There is a small overhead in setting up the https connections and a small cost to encrypt and decrypt the data that is being sent. Since https was slightly more costly, for a while it was used only for pages that contained passwords, bank account numbers, or other sensitive data.</p>
+<p>But over time as networks have become faster and the https implementations have gotten much more efficient, there is a trend toward encrypting all web server interactions whenever you are interacting with a web server where you have an account.  The current trend is towards using https for all web traffic.</p>
+</div>
+</div>
+</div>
+<h2 id="证书和证书授权">证书和证书授权<a class="headerlink" href="#证书和证书授权" title="Permanent link">&para;</a></h2>
+<p><strong>Certificates and Certificate Authorities</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">中文</label><label for="__tabbed_6_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>虽然公钥/私钥加密可以在不安全的网络上分发加密密钥，并使用这些密钥加密传输，但仍然存在一个问题，即你无法确定在连接到服务器时收到的公钥是否确实来自声称的组织。</p>
+<p><a class="glightbox" href="../sketchnote/Certificate_Authorities3.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Certificate Authorities and Public Keys" src="../sketchnote/Certificate_Authorities3.svg" /></a></p>
+<p>也许你认为自己正在连接到 www.amazon.com ，但一台恶意计算机拦截了你的流量，声称是 www.amazon.com ，并给你提供一个用于加密的公钥。如果你的网页浏览器信任这个密钥，它将使用恶意计算机的公钥加密你的银行信息并发送给恶意计算机。由于恶意计算机提供了公钥，它也拥有相应的私钥，从而能够解密并窃取你的银行信息。</p>
+<p>因此，你的计算机需要知道这个密钥的实际来源。这通过发送一个由证书颁发机构（CA）数字签名的公钥来实现。当你的计算机或浏览器最初安装时，它会知道一些知名的证书颁发机构。如果你的浏览器收到一个由其中一个知名证书颁发机构签名的公钥，它将信任这个密钥并使用它来加密和发送你的数据。如果你的计算机收到一个没有经过其受信任的证书颁发机构签名的公钥，它会在使用该密钥发送数据之前警告你。</p>
+<p>如果你看到关于不受信任证书的警告消息，你应该说“不”，并在发送任何敏感数据之前弄清楚你的网络流量为何没有被路由到你认为的服务器。</p>
+</div>
+<div class="tabbed-block">
+<p>While public/private key encryption works to allow the distribution of encryption keys across insecure networks and the use of those keys to encrypt transmissions, there is still a problem of knowing if the public key that you have received when you connected to a server is really from the organization it claims to be from.</p>
+<p><a class="glightbox" href="../sketchnote/Certificate_Authorities3.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Certificate Authorities and Public Keys" src="../sketchnote/Certificate_Authorities3.svg" /></a></p>
+<p>Perhaps you think you are connecting to www.amazon.com but a rogue computer intercepts your traffic, claiming to be www.amazon.com and giving you a public key to use for encryption. If your web browser trusts the key, it will use the rogue computer's public key to encrypt your banking information and send it to the rogue computer. Since the rogue computer gave you the public key, it also has the corresponding private key and is able to decrypt and abscond with your banking information.</p>
+<p>So your computer needs to know who the key is actually coming from.   This is achieved by sending you a public key that is digitally signed by a Certificate Authority (CA). When your computer or browser is initially installed, it knows about a number of well-known certificate authorities. If your browser is given a public key that is signed by one of the well-known certificate authorities, it trusts the key and uses it to encrypt and send your data. If your computer receives a public key that is not signed by one of its trusted certificate authorities, it will warn you before sending your data using the key.</p>
+<p>If you see a warning message about an untrusted certificate, you should probably say "no" and figure out why your network traffic is not being routed to the server that you think it is going to before sending any sensitive data.</p>
+</div>
+</div>
+</div>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p><strong>Summary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">中文</label><label for="__tabbed_7_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>由于互联网在需要广泛部署安全性时几乎已经存在了20年，我们必须找到一种方法在已经存在的四层模型上添加安全性。添加安全性的最佳位置是作为传输层的一个选项。这就是为什么我们将互联网的安全连接称为“安全套接字层”（SSL）或“传输层安全性”（TLS）。SSL和TLS之间有细微的区别，但它们都在传输层加密数据。</p>
+<p>公钥/私钥加密的发明恰逢其时，解决了共享密钥加密方法的密钥分发问题。使用公钥/私钥时，公钥可以在不安全的媒介上进行常规共享。这意味着我们可以使用未加密的连接来交换数据，并将连接升级为安全连接。</p>
+<p>通过在传输层顶部插入安全层，我们能够避免更改应用层、互联网层和链路层，同时轻松地保护任何传输层连接。这种方法确保所有通过连接发送的数据在离开计算机之前都被加密。考虑到我们中的许多人使用像WiFi这样的无线连接，攻击者很容易监控这些连接，在通过WiFi发送数据之前加密是一个好主意。</p>
+<p>浏览器通过将URL的前缀从“http:”更改为“https:”来支持安全连接。通过关注URL，最终用户可以确保他们不会在不安全的连接上发送敏感数据。一系列受信任的证书颁发机构将签名公钥，以保证您收到的密钥确实来自您期望的组织。</p>
+<p>安全传输层的设计提供了一种安全且易于使用的机制，以实现跨互联网的安全通信，适用于数万亿对交互计算机的规模。</p>
+</div>
+<div class="tabbed-block">
+<p>Since the Internet was nearly 20 years old before we needed broadly deployed security, we had to find a way to add security to the already existing four-layer model. The perfect place to add security was as an option in the Transport layer. This is why we call secure connections on the Internet "Secure Sockets Layer" (SSL) or "Transport Layer Security" (TLS).  There are subtle differences between SSL and TLS but they both encrypt data at the Transport layer.</p>
+<p>The invention of public/private key encryption was well timed in that it solved the key distribution problem of shared-secret encryption approaches. With public/private keys, the public encryption key can be routinely shared across insecure media. This means we can use an unencrypted connection to exchange data and upgrade the connection to a secure connection.</p>
+<p>By inserting the secure layer at the top of the Transport layer, we were able to avoid changing the Application, Internetwork, and Link layers while still easily securing any Transport layer connection. This approach ensures that all data being sent across a connection is encrypted before it leaves your computer.  Given that many of us use wireless connections like WiFi, which are easily monitored by attackers, it is a good idea to encrypt data before it is sent across WiFi.</p>
+<p>Browsers support secure connections by changing the prefix on the URL from "http:" to "https:". By keeping an eye on the URL, end users can make sure they never send sensitive data across insecure connections. A series of trusted Certificate Authorities will sign public keys to give you an assurance that the key you received is indeed from the organization you expect it to be.</p>
+<p>The design of the Secure Transport Layer provides a secure and yet easy-to-use mechanism for secure communications across the Internet at a scale of trillions of pairs of interacting computers.</p>
+</div>
+</div>
+</div>
+<h2 id="术语">术语<a class="headerlink" href="#术语" title="Permanent link">&para;</a></h2>
+<p><strong>Glossary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">中文</label><label for="__tabbed_8_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>非对称密钥</strong>：一种加密方法，使用一个（公钥）加密数据，然后用不同的（私钥）解密接收到的数据。</p>
+<p><strong>证书授权</strong>：一个组织，在验证公钥上列出的名称确实是拥有该公钥的人或组织后，数字签署公钥。</p>
+<p><strong>密文</strong>：一种混淆的信息版本，未掌握解密密钥和技术无法读取。</p>
+<p><strong>解密</strong>：将密文消息转换为明文消息的行为，使用秘密或密钥。</p>
+<p><strong>加密</strong>：将明文消息转换为密文消息的行为，使用秘密或密钥。</p>
+<p><strong>明文</strong>：即将被加密的可读消息。</p>
+<p><strong>私钥</strong>：用于解密传输的密钥对的一部分。</p>
+<p><strong>公钥</strong>：用于加密传输的密钥对的一部分。</p>
+<p><strong>共享密钥</strong>：一种加密方法，使用相同的密钥进行加密和解密。</p>
+<p><strong>SSL</strong>：安全套接层，一种允许应用程序请求在网络上进行加密的传输层连接的方法。类似于传输层安全性（TLS）。</p>
+<p><strong>TLS</strong>：传输层安全性，一种允许应用程序请求在网络上进行加密的传输层连接的方法。类似于安全套接层（SSL）。</p>
+</div>
+<div class="tabbed-block">
+<p><strong>asymmetric key</strong>: An approach to encryption where one (public) key is used to encrypt data prior to transmission and a different (private) key is used to decrypt data once it is received.</p>
+<p><strong>certificate authority</strong>: An organization that digitally signs public keys after verifying that the name listed in the public key is actually the person or organization in possession of the public key.</p>
+<p><strong>ciphertext</strong>: A scrambled version of a message that cannot be read without knowing the decryption key and technique.</p>
+<p><strong>decrypt</strong>: The act of transforming a ciphertext message to a plain text message using a secret or key.</p>
+<p><strong>encrypt</strong>: The act of transforming a plain text message to a ciphertext message using a secret or key.</p>
+<p><strong>plain text</strong>: A readable message that is about to be encrypted before being sent.</p>
+<p><strong>private key</strong>: The portion of a key pair that is used to decrypt transmissions.</p>
+<p><strong>public key</strong>: The portion of a key pair that is used to encrypt transmissions.</p>
+<p><strong>shared secret</strong>: An approach to encryption that uses the same key for encryption and decryption.</p>
+<p><strong>SSL</strong>: Secure Sockets Layer.  An approach that allows an application to request that a Transport layer connection is to be encrypted as it crosses the network. Similar to Transport Layer Security (TLS).</p>
+<p><strong>TLS</strong>: Transport Layer Security. An approach that allows an application to request that a Transport layer connection is to be encrypted as it crosses the network.  Similar to Secure Sockets Layer (SSL).</p>
+</div>
+</div>
+</div>
+<h2 id="问题">问题<a class="headerlink" href="#问题" title="Permanent link">&para;</a></h2>
+<p><strong>Questions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">中文</label><label for="__tabbed_9_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>你可以在网上参加这个测验，网址为 <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>使用网页浏览器时，我们如何表示希望建立安全连接？</li>
+</ol>
+<p>a) 在网址中使用 https://</p>
+<p>b) 使用安全的网页浏览器</p>
+<p>c) 打开无痕窗口</p>
+<p>d) 手动使用 SHA1 编码服务器地址</p>
+<ol>
+<li>为什么共享密钥的方法不适合在互联网上使用？</li>
+</ol>
+<p>a) 因为人们会丢失或误放秘密</p>
+<p>b) 秘密分发困难</p>
+<p>c) 共享密钥的加密和解密太容易被破解</p>
+<p>d) 共享密钥的加密和解密需要过多的计算资源</p>
+<ol>
+<li>公钥/私钥加密安全的基础数学概念是什么？</li>
+</ol>
+<p>a) 连续函数</p>
+<p>b) 泰勒级数</p>
+<p>c) 卡诺图</p>
+<p>d) 素数</p>
+<ol>
+<li>哪种密钥可以以明文形式在互联网上发送而不影响安全性？</li>
+</ol>
+<p>a) 加密密钥</p>
+<p>b) 解密密钥</p>
+<p>c) 共享密钥</p>
+<p>d) 通用安全密钥 (USK)</p>
+<ol>
+<li>安全套接层（SSL）在四层互联网架构中的位置是？</li>
+</ol>
+<p>a) 在链路层下方</p>
+<p>b) 在链路层和互联层之间</p>
+<p>c) 在互联层和传输层之间</p>
+<p>d) 在传输层和应用层之间</p>
+<ol>
+<li>如果你在咖啡馆的 WiFi 上正确使用 https，那么在进行在线购买时，最大风险是什么？</li>
+</ol>
+<p>a) 有人捕获了在 WiFi 上传输的包</p>
+<p>b) 有人捕获了网关路由器中的包</p>
+<p>c) 有人捕获了经过核心互联网路由器的包</p>
+<p>d) 你的计算机上有病毒在捕获击键</p>
+<ol>
+<li>使用安全套接层时，数据包在哪里进行加密和解密？</li>
+</ol>
+<p>a) 它们在路由器传输时被加密和解密</p>
+<p>b) 每个物理链路都有自己的独立加密</p>
+<p>c) 它们在你的计算机上加密，在服务器上解密</p>
+<p>d) 它们在 WiFi 网关加密，在到达目标计算机前的最后一个路由器解密</p>
+<ol>
+<li>为使安全套接层（SSL）正常工作，IP 层需要哪些更改？</li>
+</ol>
+<p>a) 不需要任何更改</p>
+<p>b) 需要增加对安全 IP（IPSEC）的支持</p>
+<p>c) 需要在 IP 中支持更长的数据包</p>
+<p>d) 需要加密生存时间（TTL）值</p>
+<ol>
+<li>如果一个恶意元素能够监控通过海底电缆的所有数据包，而你正确使用公钥/私钥加密，以下哪项对他们来说最难获取？</li>
+</ol>
+<p>a) 你在与哪些服务器通信</p>
+<p>b) 你使用服务器的频率</p>
+<p>c) 你从服务器检索了多少数据</p>
+<p>d) 你从服务器检索了哪些文档</p>
+<ol>
+<li>
+<p>在公钥/私钥加密中，证书授权的目的是什么？</p>
+<p>a) 确保人们不伪造学习活动的徽章</p>
+<p>b) 确保数据包被路由到正确的目标计算机</p>
+<p>c) 确保公钥来自其声称的组织</p>
+<p>d) 确定某个国家何时必须从 IPv4 切换到 IPv6</p>
+</li>
+<li>
+<p>ARPANET 网络自 1960 年代起开始运营，安全套接层（SSL）直到 1980 年代才被发明。ARPANET 是如何确保其网络数据安全的？</p>
+<p>a) 使用公钥/私钥并加密所有传输</p>
+<p>b) 在链路层使用加密</p>
+<p>c) 确保没有人能够访问物理链路</p>
+<p>d) 只使用安全的 WiFi 路由器</p>
+</li>
+<li>
+<p>以下哪个答案是 "Security is fun" 通过凯撒密码（Caesar Cipher）位移 1 加密的结果？</p>
+<p>a) Ptsjduao rt dii</p>
+<p>b) Wentudhs di dju</p>
+<p>c) Tfdvsjuz jt gvo</p>
+<p>d) Asdfghjk qw zxc</p>
+</li>
+<li>
+<p>用于加密 "V yvxr frphevgl" 的凯撒密码位移是多少？</p>
+<p>a) 1</p>
+<p>b) 6</p>
+<p>c) 13</p>
+<p>d) 24</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>You can take this quiz online at <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>How do we indicate that we want a secure connection when using a web browser?</p>
+<p>a) Use https:// in the URL</p>
+<p>b) Use a secure web browser</p>
+<p>c) Open an incognito window</p>
+<p>d) Manually encode the address of the server using SHA1</p>
+</li>
+<li>
+<p>Why is a shared-secret approach not suitable for use on the Internet?</p>
+<p>a) Because people would lose or misplace the secret</p>
+<p>b) It is difficult to distribute the secrets</p>
+<p>c) Encryption and decryption with shared secrets are too easily broken</p>
+<p>d) Encryption and decryption with shared secrets take too much compute power</p>
+</li>
+<li>
+<p>What is the underlying mathematical concept that makes public/private key encryption secure?</p>
+<p>a) Continuous functions</p>
+<p>b) Taylor series</p>
+<p>c) Karnaugh Maps</p>
+<p>d) Prime numbers</p>
+</li>
+<li>
+<p>Which of the keys can be sent across the Internet in plain text without compromising security?</p>
+<p>a) Encryption key</p>
+<p>b) Decryption Key</p>
+<p>c) Shared Secret</p>
+<p>d) Univerally Safe Key (USK)</p>
+</li>
+<li>
+<p>Where does the Secure Sockets Layer (SSL) fit in the four-layer Internet architecture?</p>
+<p>a) Below the Link layer</p>
+<p>b) Between the Link and Internetworking layers</p>
+<p>c) Between the Internetworking and Transport layers</p>
+<p>d) Between the Transport and Application layers</p>
+</li>
+<li>
+<p>If you were properly using https in a browser over WiFi in a cafe, which of the following is the greatest risk to your losing credit card information when making an online purchase?</p>
+<p>a) Someone captured the packets that were sent across the WiFi</p>
+<p>b) Someone captured the packets in the gateway router</p>
+<p>c) Someone captured the packets as they passed through a core Intenet router</p>
+<p>d) You have a virus on your computer that is capturing keystrokes</p>
+</li>
+<li>
+<p>With the Secure Sockets Layer, where are packets encrypted and decrypted?</p>
+<p>a) They are encrypted and decrypted as they pass through the router</p>
+<p>b) Each physical link has its own separate encryption</p>
+<p>c) They are encrypted in your computer and decrypted in the server</p>
+<p>d) They are encrypted in the WiFi gateway and decrypted in the last router before the destination computer</p>
+</li>
+<li>
+<p>What changes to the IP layer were needed to make secure socket layer (SSL) work?</p>
+<p>a) No changes were needed</p>
+<p>b) We had to add support for Secure IP (IPSEC)</p>
+<p>c) We needed to support longer packets in IP</p>
+<p>d) The Time-To-Live (TTL) value needed to be encrypted</p>
+</li>
+<li>
+<p>If a rogue element was able to monitor all packets going through an undersea cable and you were using public/private key encryption properly, which of the following would be the most difficult for them to obtain?</p>
+<p>a) What servers you were communicating with</p>
+<p>b) How often you used the servers</p>
+<p>c) How much data you retrieved from the servers</p>
+<p>d) Which documents you retrieved from the servers</p>
+</li>
+<li>
+<p>What is the purpose of a Certificate Authority in public/private key encryption?</p>
+<p>a) To make sure people do not forge badges for learning activities</p>
+<p>b) To make sure packets get routed to the correct destination computer</p>
+<p>c) To assure us that a public key comes from the organization it claims to be from</p>
+<p>d) To choose when a particular country must switch from IPv4 to IPv6</p>
+</li>
+<li>
+<p>The ARPANET network was in operation starting in the 1960s. Secure Sockets Layer (SSL) was not invented util the 1980s. How did the ARPANET insure the security of the data on its network?</p>
+<p>a) By using public/private keys and encrypting all transmissions</p>
+<p>b) By using encryption at the Link layer</p>
+<p>c) By making sure no one could access the physical links</p>
+<p>d) By only using secure WiFi routers</p>
+</li>
+<li>
+<p>Which of these answers is "Security is fun" encrypted with a Caesar Cipher shift of 1.</p>
+<p>a) Ptsjduao rt dii</p>
+<p>b) Wentudhs di dju</p>
+<p>c) Tfdvsjuz jt gvo</p>
+<p>d) Asdfghjk qw zxc</p>
+</li>
+<li>
+<p>What Caesar Cipher shift was used to encrypt "V yvxr frphevgl"?</p>
+<p>a) 1</p>
+<p>b) 6</p>
+<p>c) 13</p>
+<p>d) 24</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月20日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月19日</span>
+      
+    
+  </small>
+</div>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.tabs.link", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.prune", "navigation.instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.94c44541.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

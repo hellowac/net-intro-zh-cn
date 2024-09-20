@@ -1,0 +1,1219 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac-类型检查">
+      
+      
+      
+      
+        <link rel="prev" href="../c2/">
+      
+      
+        <link rel="next" href="../c4/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
+    
+    
+      
+        <title>链路层 - 网络技术简介-中文版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bd3936ea.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#链路层" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+你当前浏览的版本已不是最新版本，
+<a href="./..">
+    <strong>点击这里</strong>
+</a>查看最新版本的文档
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="网络技术简介-中文版" class="md-header__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            网络技术简介-中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              链路层
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c1/" class="md-tabs__link">
+        
+  
+    
+  
+  简介
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c2/" class="md-tabs__link">
+        
+  
+    
+  
+  网络架构
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  链路层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c4/" class="md-tabs__link">
+        
+  
+    
+  
+  网络层（IP）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c5/" class="md-tabs__link">
+        
+  
+    
+  
+  域名系统
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c6/" class="md-tabs__link">
+        
+  
+    
+  
+  传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c7/" class="md-tabs__link">
+        
+  
+    
+  
+  应用层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c8/" class="md-tabs__link">
+        
+  
+    
+  
+  安全传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c9/" class="md-tabs__link">
+        
+  
+    
+  
+  OSI 模型
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c10/" class="md-tabs__link">
+        
+  
+    
+  
+  总结
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project_links/" class="md-tabs__link">
+        
+  
+    
+  
+  项目链接
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="网络技术简介-中文版" class="md-nav__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    网络技术简介-中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络架构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    链路层
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    链路层
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#共享空中信号" class="md-nav__link">
+    共享空中信号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#礼貌与协调" class="md-nav__link">
+    礼貌与协调
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#其他链路层中的协调" class="md-nav__link">
+    其他链路层中的协调
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络层（IP）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    域名系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    应用层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSI 模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目链接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#共享空中信号" class="md-nav__link">
+    共享空中信号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#礼貌与协调" class="md-nav__link">
+    礼貌与协调
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#其他链路层中的协调" class="md-nav__link">
+    其他链路层中的协调
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="链路层">链路层<a class="headerlink" href="#链路层" title="Permanent link">&para;</a></h1>
+<p><strong>Link Layer</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">中文</label><label for="__tabbed_1_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>我们互联网架构的最低层是链接层。我们称其为“最低层”，因为它最接近物理网络介质。链接层通常通过电缆、光纤或无线信号传输数据。链接层的一个关键要素是，数据通常只能从源计算机传输到目的计算机的部分距离。有线以太网、WiFi 和蜂窝电话网络是能够传输大约一公里数据的链接层示例。光纤电缆，特别是那些位于海底的光纤，能够传输数据数千公里。卫星链路也能在长距离上传输数据。</p>
+<p><a class="glightbox" href="../images/layers-link.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="链接层" src="../images/layers-link.svg" /></a></p>
+<p>无论我们能传输数据的距离如何，它仍然是在单一链接上行驶，要到达最终的目的计算机，需要通过多个链接转发数据包。在本节中，我们将详细探讨一种最常见的链接层是如何运作的。WiFi 是一个很好的案例，可以用来分析在链接层必须解决的许多问题。我们在这些描述中简化了一些技术细节，以便更易于理解。</p>
+</div>
+<div class="tabbed-block">
+<p>The lowest layer of our Internet Architecture is the Link layer. We call it the "lowest layer" because it is closest to the physical network media. Often the Link layer transmits data using a wire, a fiber optic cable, or a radio signal. A key element of the Link layer is that usually data can only be transmitted part of the way from the source computer to the destination computer. Wired Ethernet, WiFi, and the cellular phone network are examples of link layers that can transmit data about a kilometer. Fiber optic cables, particularly those under the oceans, can transmit data up to thousands of kilometers. Satellite links can also send data over long distances.</p>
+<p><a class="glightbox" href="../images/layers-link.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="The Link Layer" src="../images/layers-link.svg" /></a></p>
+<p>Regardless of the distance we can send the data, it is still traveling over a single link, and to reach the ultimate destination computer requires forwarding packets across multiple links. In this section we will look at how one of the most common link layers functions in some detail. WiFi is a great way to look at many issues that must be solved at the link layer. We simplify some of the technical detail in these descriptions to make them easier to understand.</p>
+</div>
+</div>
+</div>
+<h2 id="共享空中信号">共享空中信号<a class="headerlink" href="#共享空中信号" title="Permanent link">&para;</a></h2>
+<p><strong>Sharing the Air</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">中文</label><label for="__tabbed_2_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>当你的笔记本电脑或手机使用 WiFi 连接到互联网时，它通过一个小型低功耗的无线电发送和接收数据。你的计算机中的无线电最多只能发送大约 300 米，因此它将数据包发送到你家中的路由器，路由器通过链接将数据包转发到互联网的其他部分。有时，我们称处理你计算机数据包的第一个路由器为“基站”或“网关”。</p>
+<p>所有距离基站足够近并且打开了无线电的计算机都能接收到基站发送的所有数据包，无论这些数据包本应发送给哪台计算机。它们也“听到”每台附近计算机发送的所有数据包。因此，你的计算机需要一种方法来识别哪些数据包是它自己的，哪些是发送给其他计算机的，可以安全忽略。</p>
+<p>一个有趣的副作用是，所有范围内的计算机都能接收到所有数据包，这意味着一个恶意计算机也可以监听和捕获你的数据包，可能获取重要信息，比如银行账户号码或在线服务的密码。我们将在后面的章节中回到如何保护你的数据不被窥探的问题。</p>
+<p>每个设备中每个构建的 WiFi 无线电在制造时都会被赋予一个唯一的序列号。这意味着每台使用 WiFi 的计算机都有自己的序列号，网关中的无线电也有一个序列号。你通常可以在设备的设置界面中查找 WiFi 无线电的序列号。它通常以以下形式显示：</p>
+<div class="codehilite"><pre><span></span><code><span class="mi">0</span><span class="n">f</span><span class="o">:</span><span class="mi">2</span><span class="n">a</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">f</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span>
+</code></pre></div>
+
+<p>这只是你 WiFi 无线电的 48 位序列号的表示，也称为“媒体访问控制”（Media Access Control，MAC）地址。MAC 地址就像明信片上的“发件人”或“收件人”地址。通过 WiFi 发送的每个数据包（无线明信片）都有一个源地址和一个目的地址，因此所有计算机都知道哪些消息是它们的。</p>
+<p>当你打开计算机并连接到 WiFi 网络时，你的计算机需要确定可以用来向路由器发送数据包的 MAC 地址。当你从一个物理位置移动到另一个位置时，你的计算机将与不同的网关通信，而每个网关都有不同的序列号。因此，当你第一次连接到新的 WiFi 时，你的计算机必须发现该特定 WiFi 网关的 MAC 地址。</p>
+<p>为此，你的计算机会向广播地址发送一条特殊消息，实际上是在询问：“谁负责这个 WiFi？”由于你的计算机知道它不是网关，它将以自己的序列号作为“发件人”地址，并将广播地址作为“收件人”地址发送广播消息，以询问该 WiFi 网络上是否存在任何网关。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">发件人</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="n">f</span><span class="o">:</span><span class="mi">2</span><span class="n">a</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">f</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span>
+<span class="err">收件人</span><span class="o">:</span><span class="w"> </span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+<span class="err">数据</span><span class="o">:</span><span class="w"> </span><span class="err">谁是这个网络的</span><span class="w"> </span><span class="n">MAC</span><span class="w"> </span><span class="err">网关？</span>
+</code></pre></div>
+
+<p>如果网络上有网关，网关会将包含其序列号的消息发送回你的计算机。</p>
+<div class="codehilite"><pre><span></span><code><span class="err">发件人</span><span class="o">:</span><span class="w"> </span><span class="mi">98</span><span class="o">:</span><span class="mi">2</span><span class="n">f</span><span class="o">:</span><span class="mi">4</span><span class="n">e</span><span class="o">:</span><span class="mi">78</span><span class="o">:</span><span class="n">c1</span><span class="o">:</span><span class="n">b4</span>
+<span class="err">收件人</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="n">f</span><span class="o">:</span><span class="mi">2</span><span class="n">a</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">f</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span>
+<span class="err">数据</span><span class="o">:</span><span class="w"> </span><span class="err">我是网关</span>
+<span class="w">    </span><span class="err">欢迎来到我的网络</span>
+</code></pre></div>
+
+<p>如果没有回复，你的计算机会等几秒钟，然后假设该网络没有网关。当没有网关时，你的计算机可能会显示一个不同的 WiFi 图标，或根本不显示 WiFi 图标。有时可能存在多个网关，但我们暂时忽略这一点，因为这有点复杂且不太常见。</p>
+<p>一旦你的计算机接收到包含网关 MAC 地址的消息，就可以使用该地址发送希望网关转发到互联网的数据包。从那时起，你计算机的所有数据包都有实际的目的地序列号。你希望尽量少使用广播地址，因为连接到 WiFi 的每台计算机都会接收并处理发送到广播地址的任何消息，以确保这些消息不是发给它们的。</p>
+</div>
+<div class="tabbed-block">
+<p>When your laptop or phone is using WiFi to connect to the Internet, it is  sending and receiving data with a small, low-powered radio. The radio in your computer can only send data about 300 meters, so your computer sends your packets to the router in your home, which forwards the packets using a link to the rest of the Internet.  Sometimes we call the first router that handles your computer's packets the "base station" or "gateway".</p>
+<p>All computers that are close enough to the base station with their radios turned on receive all of the packets the base station transmits, regardless of which computer the packet is supposed to be sent to. They also  "hear" all the packets sent by every other nearby computer. So your computer needs a way to know which packets to treat as its own and which packets are being sent to other computers and can be safely ignored.</p>
+<p>An interesting side effect of the fact that all the computers within range can hear all packets is that a rogue computer could also be listening to and capturing your packets, perhaps getting ahold of important data like bank account numbers or passwords to online services. We will come back to the issue of protecting your data from prying eyes and ears in a later section.</p>
+<p>Every WiFi radio in every device that is ever built is given a unique serial number at the time it is manufactured. This means that each of the computers using WiFi has its own serial number, and the radio in the gateway also has a serial number. You can usually go into a settings screen on your device and look up the serial number for the WiFi radio in your device. It is generally shown in the following form:</p>
+<div class="codehilite"><pre><span></span><code><span class="mi">0</span><span class="n">f</span><span class="o">:</span><span class="mi">2</span><span class="n">a</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">f</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span>
+</code></pre></div>
+
+<p>This is just a representation of a 48-bit serial number for your WiFi radio. It is also called the "Media Access Control" or "MAC" address. A MAC address is like a "from" or "to" address on a postcard. Every packet (radio postcard) sent across the WiFi has a source and destination address, so all of the computers know which messages are theirs.</p>
+<p>When you turn on your computer and connect to a WiFi network, your computer needs to figure out which of the MAC addresses on the WiFi can be used to send packets to the router. When you move from one physical location to another, your computer will be talking to different gateways and each of those gateways will have a different serial number. So when you first connect to a new WiFi, your computer must discover the MAC address for the gateway of that particular WiFi.</p>
+<p>To do this, your computer sends a special message to a broadcast address, effectively asking the question, "Who is in charge of this WiFi?" Since your computer knows it is not the gateway itself, it sends a broadcast message with its own serial number as the "from" address and the broadcast  address as the "to" address to ask if there are any gateways present on the WiFi network.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">From</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="n">f</span><span class="o">:</span><span class="mi">2</span><span class="n">a</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">f</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span>
+<span class="n">To</span><span class="o">:</span><span class="w"> </span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span><span class="o">:</span><span class="n">ff</span>
+<span class="n">Data</span><span class="o">:</span><span class="w"> </span><span class="n">Who</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">MAC</span><span class="o">-</span><span class="n">Gateway</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">network</span><span class="o">?</span>
+</code></pre></div>
+
+<p>If there is a gateway on the network, the gateway sends a message containing its serial number back to your computer.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">From</span><span class="o">:</span><span class="w"> </span><span class="mi">98</span><span class="o">:</span><span class="mi">2</span><span class="n">f</span><span class="o">:</span><span class="mi">4</span><span class="n">e</span><span class="o">:</span><span class="mi">78</span><span class="o">:</span><span class="n">c1</span><span class="o">:</span><span class="n">b4</span>
+<span class="n">To</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="n">f</span><span class="o">:</span><span class="mi">2</span><span class="n">a</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">f</span><span class="o">:</span><span class="n">b3</span><span class="o">:</span><span class="mi">1</span><span class="n">a</span>
+<span class="n">Data</span><span class="o">:</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="n">am</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">gateway</span>
+<span class="w">   </span><span class="n">Welcome</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">my</span><span class="w"> </span><span class="n">network</span>
+</code></pre></div>
+
+<p>If there are no replies, your computer waits a few seconds and then assumes there is no gateway for this network. When there is no gateway, your computer might show a different WiFi icon or not show the WiFi icon at all. Sometimes there can be more than one gateway, but we will ignore that for a while because it is a little complex and not very common.</p>
+<p>Once your computer receives a message with the MAC address of the gateway, it can use that address to send packets that it wants the gateway to forward to the Internet. From that point on, all of your computer's packets have the actual serial number of the destination. You want to use the broadcast address as little as possible because every computer connected to the WiFi receives and processes any messages sent to the broadcast address to make sure the messages were not intended for them.</p>
+</div>
+</div>
+</div>
+<h2 id="礼貌与协调">礼貌与协调<a class="headerlink" href="#礼貌与协调" title="Permanent link">&para;</a></h2>
+<p><strong>Courtesy and Coordination</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">中文</label><label for="__tabbed_3_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>由于许多计算机共享相同的无线频率，协调它们发送数据的方式非常重要。当房间里有一群人时，他们不能同时说话，否则一切都会变得混乱。当多个 WiFi 无线电在相同频率上同时传输时，情况也会如此。因此，我们需要一种方法来协调所有无线电，以便最好地利用共享频率。我们将探讨避免因传输“碰撞”而导致数据丢失的技术基础。</p>
+<p>第一种技术称为“载波侦听”。该技术首先监听是否有传输进行，如果已经有传输在进行中，就等待该传输完成。看起来你可能需要等很长时间，但由于所有消息都被分解为数据包，通常你的计算机只需等待当前发送数据的计算机完成一个数据包，然后你的计算机就有机会发送数据。</p>
+<p>如果你的计算机的 WiFi 无线电监听到数据并听到静默，它可以开始传输。但是，如果另一台希望发送数据包的计算机的 WiFi 无线电也监听到相同的静默，并决定在完全相同的时间开始传输呢？如果两台或更多 WiFi 无线电同时开始传输，所有数据都会被损坏，两个数据包都会丢失。因此，一旦你的 WiFi 无线电开始发送数据包，它必须监听以确保能够接收到自己的数据。如果它接收到的不是它发送的内容，WiFi 无线电就会认为发生了碰撞（这称为碰撞检测），并停止传输，因为它知道目的地 WiFi 无线电不会收到任何数据。</p>
+<p>我们人类在一间满是人的房间里也会做类似的事情。当两个人同时开始说话时，他们通常能很快注意到另一个人在说话，并迅速停止。但问题在于如何重新开始对话。在长时间的停顿后，两个人很可能会再次同时开始说话。这种情况可能反复发生，每个人都说“不是你，是我”，试图找出如何重新开始对话。这有时会显得相当搞笑。</p>
+<p>两个计算机中的 WiFi 无线电在发送碰撞数据包时能够比人类更好地解决这个问题。当 WiFi 无线电检测到碰撞或传输混乱时，它们会计算一个随机的等待时间，然后再尝试传输。计算随机等待时间的规则被设定为确保两个发生碰撞的站点选择不同的等待时间，然后再尝试重新传输数据包。</p>
+<p>这个监听、传输、监听、等待并在必要时重试的正式名称是“载波侦听多重访问与碰撞检测”（Carrier Sense Multiple Access with Collision Detection，CSMA/CD）。</p>
+<p>看起来仅仅“尝试一下”，然后在传输与其他站点发生碰撞时“再尝试一次”似乎有点混乱。但实际上，这种方法运作良好。有一整类链接层使用这种基本的监听、传输、监听和可选重试的模式。以太网、蜂窝电话数据，甚至短消息服务（SMS/文本消息）都使用这种“尝试然后重试”的方法。</p>
+</div>
+<div class="tabbed-block">
+<p>Because many computers are sharing the same radio frequencies, it's important to coordinate how they send data. When there's a crowd of people in a room, they can't all talk at the same time or everything will be garbled. The same  thing happens when multiple WiFi radios transmit at the same time on the same frequency. So we need some way to coordinate all the radios to make best use of the shared frequencies. We will look at the basics of technical approaches to avoiding lost data due to transmission "collisions".</p>
+<p>The first technique is called "Carrier Sense". The technique is to first listen for a transmission, and if there is already a transmission in progress, wait until the transmission finishes. It might seem like you could wait for a long time, but since all messages are broken into packets, usually your computer only has to wait for the computer currently sending data to finish a packet, after which your computer gets its chance to send data.</p>
+<p>If your computer's WiFi radio listens for data and hears silence, it can begin transmitting. But what if another computer's WiFi radio that wants to send a packet listened to and heard the same silence and decided to start transmitting at exactly the same time? If two or more WiFi radios start transmitting at the same time, all of the data is corrupted and both packets are lost. So once your WiFi radio starts sending a packet it is important for it to listen to make sure it can receive its own data. If it is not receiving the same thing that it is sending, your WiFi radio assumes that a collision has happened (this is called Collision Detection) and stops transmitting, since it knows that no data will be received by the destination WiFi radio.</p>
+<p>We humans do a similar thing in a room full of people. When two people start talking at the same time, they are good at noticing that another person is talking and quickly stop talking. But the problem is how to restart the conversation. After a long pause it is common that both people start talking at the exact same time <em>again</em>. This can happen over and over and each person says "No, you" repeatedly to attempt to figure out how to get the conversation restarted. It can be quite comical at times.</p>
+<p>The WiFi radios in two computers that send colliding packets are able to solve this problem much better than people can solve the problem. When the WiFi radios detect a collision or garbled transmission, they compute a random amount of time to wait before retrying the transmission. The rules for computing the random wait are set up to make sure the two colliding stations pick different amounts of time to wait before attempting to re-transmit the packet.</p>
+<p>The formal name for the listen, transmit, listen, and wait and retry if necessary  is called "Carrier Sense Multiple Access with Collision Detection" or CSMA/CD.</p>
+<p>It might sound a little chaotic to just "give it a try" and then "give it another try" if your transmission collides with another station's transmission. But in practice it works well. There is a whole category of link layers that use this basic pattern of listen, transmit, listen, and optionally retry. Wired Ethernet, cellular telephone data, and even Short Message Service (SMS/Texting) all use this "try then retry" approach.</p>
+</div>
+</div>
+</div>
+<h2 id="其他链路层中的协调">其他链路层中的协调<a class="headerlink" href="#其他链路层中的协调" title="Permanent link">&para;</a></h2>
+<p><strong>Coordination in Other Link Layers</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">中文</label><label for="__tabbed_4_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>有时，当一个链路层有许多发送站点并且需要在长时间内接近 100% 的效率运行时，设计会采取不同的方法。在这种方法中，有一个“令牌”，指示每个站点何时有机会传输数据。站点必须持有令牌才能开始传输，而不是监听“静默”并立即插入，它们必须等待自己的机会。</p>
+<p>当一个站点收到令牌并且有数据包要发送时，它会发送该数据包。一旦数据包发送完毕，该站点就放弃令牌，并等待令牌返回。如果没有任何站点有数据要发送，令牌将尽可能快速地从一台计算机移动到另一台计算机。</p>
+<p><a class="glightbox" href="../sketchnote/Token.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="使用令牌进行通信" src="../sketchnote/Token.svg" /></a></p>
+<p>一组人坐在会议上，可以通过传递一个小球的方式进行交流，只有持有球的人才能发言。当你得到球并有话要说时，你可以短时间内发言（传输一个数据包），然后再把球传递出去。</p>
+<p>“尝试然后重试”的 CSMA/CD 方法在没有数据或传输低或中等水平的数据时非常有效。但在令牌式网络中，如果没有数据要发送，而你又想发送一个数据包，你仍然必须等待一段时间，直到收到令牌才能开始传输。当你完成一个数据包时，你必须等待令牌回来才能发送下一个数据包。如果你是唯一想要发送数据的站点，你将花费很多时间等待令牌在经过其他所有站点后回到你那里。</p>
+<p>令牌方法最适合在像卫星链接或海底光纤链接这样的链路介质上使用，因为在这些情况下，检测碰撞可能会耗时太长或成本太高。而 CSMA/CD（监听-尝试）则最适合用于廉价、短距离的介质，并且有很多共享介质的站点，它们只发送短时间的数据。因此，这就是为什么 WiFi（和 CSMA/CD）在咖啡店、家中或学校的教室中提供网络访问如此有效的原因。</p>
+</div>
+<div class="tabbed-block">
+<p>Sometimes when a link layer has many transmitting stations and needs to operate at near 100% efficiency for long periods of time, the design takes a different approach. In this approach, there is a "token" that indicates when each station is given the opportunity to transmit data. Stations cannot start a transmission unless they have the token. Instead of listening for "silence" and jumping in, they must wait for their turn to come around.</p>
+<p>When a station receives the token and has a packet to send, it sends the packet. Once the packet has been sent, the station gives up the token and waits until the token comes back to it. If none of the stations have any data to send, the token is moved from one computer to the next computer as quickly as possible.</p>
+<p><a class="glightbox" href="../sketchnote/Token.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Communicating with a Token" src="../sketchnote/Token.svg" /></a></p>
+<p>A group of people sitting around a meeting could communicate without ever interrupting each other by having a small ball that they pass around in a circle and only allowing the person who has the ball to speak. When you get the ball and have something to say you talk for a short period (transmit a packet of words) and then pass the ball on.</p>
+<p>The "try then retry" CSMA/CD approach works very well when there is no data or when low or moderate levels of data are being sent. But on a token-style network, if there is no data being sent and you want to send a packet, you still have to wait for a while before you receive the token and can start transmitting. When you finish your packet you have to wait until the token comes back before you can send the next packet. If you are the only station that wants to send data, you spend a good bit of time waiting for the token to come back to you after passing through all of the other stations.</p>
+<p>The token approach is best suited when using a link medium such as  as a satellite link or a undersea fiber optic link where it might take too long or be too costly to detect a collision. The CSMA/CD (listen-try) is best suited when the medium is inexpensive, shorter distance, and there are a lot of stations sharing the medium that only send data in short bursts. So that is why WiFi (and CSMA/CD) is so effective for providing network access in a coffee shop, home, or room in a school.</p>
+</div>
+</div>
+</div>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p><strong>Summary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">中文</label><label for="__tabbed_5_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>现在我们已经看过我们四层架构中的“最低”层，并且简单了解了链路层的工作原理。链路层的设计中还有许多其他细节，比如连接距离、电压、频率、速度等。</p>
+<p>分层架构的一个关键好处是，设计和构建链路层技术的工程师可以忽略链路层上方各层处理的所有问题。这使他们能够专注于构建最佳的数据传输解决方案。现代的链路层，如 WiFi、卫星、宽带调制解调器、以太网和蜂窝技术，都得到了很好的发展。数据传输如此迅速和无缝，以至于一旦我们建立了连接，我们几乎不需要担心链路层。它就是这样运作的。</p>
+</div>
+<div class="tabbed-block">
+<p>So now we have looked at the "lowest" layer in our four-layer architecture. And we have only taken a simple look at how the Link layer works. There are many other details that must be designed into a link layer like connection distance, voltage, frequency, speed, and many others.</p>
+<p>A key benefit of the layered architecture is that engineers who design and build Link layer technologies can ignore all of the issues that are handled by the layers above the Link layer. This allows them to focus on building the best possible solution to moving data across a single "hop". Modern-day link layers like WiFi, satellite, cable modems, Ethernet, and cellular technology are very well developed. Data moves so quickly and seamlessly that once we get our connection we rarely have to worry about the Link layer.  It just works.</p>
+</div>
+</div>
+</div>
+<h2 id="术语">术语<a class="headerlink" href="#术语" title="Permanent link">&para;</a></h2>
+<p><strong>Glossary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">中文</label><label for="__tabbed_6_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>基站</strong>：处理您的数据包并将其转发到互联网的第一个路由器的另一种称呼。</p>
+<p><strong>广播</strong>：以一种方式发送数据包，使所有连接到局域网的站点都能接收到该数据包。</p>
+<p><strong>网关</strong>：将局域网连接到更广泛网络（如互联网）的路由器。想要将数据发送到局域网外的计算机必须将数据包发送到网关进行转发。</p>
+<p><strong>MAC 地址</strong>：在设备制造时分配给网络硬件的一种地址。</p>
+<p><strong>令牌</strong>：一种允许多台计算机共享相同物理媒介而不发生碰撞的技术。每台计算机必须在接收到令牌后才能发送数据。</p>
+</div>
+<div class="tabbed-block">
+<p><strong>base station</strong>: Another word for the first router that handles your packets as they are forwarded to the Internet.</p>
+<p><strong>broadcast</strong>: Sending a packet in a way that all the stations connected to a local area network will receive the packet.</p>
+<p><strong>gateway</strong>: A router that connects a local area network to a wider area network such as the Internet. Computers that want to send data outside the local network must send their packets to the gateway  for forwarding.</p>
+<p><strong>MAC Address</strong>: An address that is assigned to a piece of network hardware  when the device is manufactured.</p>
+<p><strong>token</strong>: A technique to allow many computers to share the same physical  media without collisions.  Each computer must wait until it has received
+the token before it can send data.</p>
+</div>
+</div>
+</div>
+<h2 id="问题">问题<a class="headerlink" href="#问题" title="Permanent link">&para;</a></h2>
+<p><strong>Questions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">中文</label><label for="__tabbed_7_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>您可以在线进行此测验，网址为 <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>在使用 WiFi 网络与互联网通信时，您的计算机将数据包发送到哪里？</p>
+<p>a) 网关</p>
+<p>b) 卫星</p>
+<p>c) 手机信号塔</p>
+<p>d) 互联网中央办公室</p>
+</li>
+<li>
+<p>网络设备的链接/物理地址是如何分配的？</p>
+<p>a) 由信号塔分配</p>
+<p>b) 由互联网分配号码管理局 (IANA) 分配</p>
+<p>c) 由链接设备的制造商分配</p>
+<p>d) 由政府分配</p>
+</li>
+<li>
+<p>以下哪个是链接地址？</p>
+<p>a) 0f:2a:b3:1f:b3:1a</p>
+<p>b) 192.168.3.14</p>
+<p>c) www.khanacademy.com</p>
+<p>d) @drchuck</p>
+</li>
+<li>
+<p>您的计算机如何找到 WiFi 网络上的网关？</p>
+<p>a) 它具有由制造商安装的网关地址</p>
+<p>b) 它广播请求网关地址</p>
+<p>c) 它不断向所有可能的网关地址发送消息，直到找到一个有效的地址</p>
+<p>d) 用户必须手动输入网关地址</p>
+</li>
+<li>
+<p>当您的计算机想要通过 WiFi 发送数据时，首先必须做什么？</p>
+<p>a) 聆听其他计算机是否正在发送数据</p>
+<p>b) 直接开始发送数据</p>
+<p>c) 向网关发送消息请求发送权限</p>
+<p>d) 等待通知轮到自己发送</p>
+</li>
+<li>
+<p>当一个 WiFi 连接的工作站尝试发送数据并感知到发生了碰撞时，它会怎么做？</p>
+<p>a) 继续发送消息，以便部分消息能够传输</p>
+<p>b) 等待网关通知碰撞结束</p>
+<p>c) 立即重新开始从头发送消息</p>
+<p>d) 停止发送并等待随机时间后再重新开始发送</p>
+</li>
+<li>
+<p>当一个站点想要在“令牌”式网络上发送数据时，它必须首先做什么？</p>
+<p>a) 聆听其他计算机是否正在发送数据</p>
+<p>b) 直接开始发送数据</p>
+<p>c) 向网关发送消息请求发送权限</p>
+<p>d) 等待通知轮到自己发送</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>You can take this quiz online at <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>When using a WiFi network to talk to the Internet, where does your computer send its packets?</p>
+<p>a) A gateway</p>
+<p>b) A satellite</p>
+<p>c) A cell phone tower</p>
+<p>d) The Internet Central Office</p>
+</li>
+<li>
+<p>How is the link/physical address for a network device assigned?</p>
+<p>a) By the cell tower</p>
+<p>b) By the Internet Assignment Numbers Authority (IANA)</p>
+<p>c) By the manufacturer of the link equipment</p>
+<p>d) By the government</p>
+</li>
+<li>
+<p>Which of these is a link address?</p>
+<p>a) 0f:2a:b3:1f:b3:1a</p>
+<p>b) 192.168.3.14</p>
+<p>c) www.khanacademy.com</p>
+<p>d) @drchuck</p>
+</li>
+<li>
+<p>How does your computer find the gateway on a WiFi network?</p>
+<p>a) It has a gateway address installed by the manufacturer</p>
+<p>b) It broadcasts a request for the address of the gateway</p>
+<p>c) It repeatedly sends a message to all possible gateway addresses until it finds one that works</p>
+<p>d) The user must enter the gateway address by hand</p>
+</li>
+<li>
+<p>When your computer wants to send data across WiFi, what is the first thing it must do?</p>
+<p>a) Listen to see if other computers are sending data</p>
+<p>b) Just start sending the data</p>
+<p>c) Send a message to the gateway asking for permission to transmit</p>
+<p>d) Wait until informed that it is your turn to transmit</p>
+</li>
+<li>
+<p>What does a WiFi-connected workstation do when it tries to send data and senses a collision has happened?</p>
+<p>a) Keep sending the message so part of the message makes it through</p>
+<p>b) Wait until told by the gateway that the collision is over</p>
+<p>c) Immediately restart transmitting the message at the beginning</p>
+<p>d) Stop transmitting and wait a random amount of time before restarting</p>
+</li>
+<li>
+<p>When a station wants to send data across a "token"-style network, what is the first thing it must do?</p>
+<p>a) Listen to see if other computers are sending data</p>
+<p>b) Just start sending the data</p>
+<p>c) Send a message to the gateway asking for permission to transmit</p>
+<p>d) Wait until informed that it is your turn to transmit</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<ul>
+<li><a href="#link-layer"></a></li>
+<li><a href="#sharing-the-air"></a></li>
+<li><a href="#courtesy-and-coordination"></a></li>
+<li><a href="#coordination-in-other-link-layers"></a></li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月20日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月19日</span>
+      
+    
+  </small>
+</div>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.tabs.link", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.prune", "navigation.instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.94c44541.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

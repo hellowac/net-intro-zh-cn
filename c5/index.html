@@ -1,0 +1,1101 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac-类型检查">
+      
+      
+      
+      
+        <link rel="prev" href="../c4/">
+      
+      
+        <link rel="next" href="../c6/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
+    
+    
+      
+        <title>域名系统 - 网络技术简介-中文版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bd3936ea.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#域名系统" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+你当前浏览的版本已不是最新版本，
+<a href="./..">
+    <strong>点击这里</strong>
+</a>查看最新版本的文档
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="网络技术简介-中文版" class="md-header__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            网络技术简介-中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              域名系统
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c1/" class="md-tabs__link">
+        
+  
+    
+  
+  简介
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c2/" class="md-tabs__link">
+        
+  
+    
+  
+  网络架构
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c3/" class="md-tabs__link">
+        
+  
+    
+  
+  链路层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c4/" class="md-tabs__link">
+        
+  
+    
+  
+  网络层（IP）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  域名系统
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c6/" class="md-tabs__link">
+        
+  
+    
+  
+  传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c7/" class="md-tabs__link">
+        
+  
+    
+  
+  应用层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c8/" class="md-tabs__link">
+        
+  
+    
+  
+  安全传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c9/" class="md-tabs__link">
+        
+  
+    
+  
+  OSI 模型
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c10/" class="md-tabs__link">
+        
+  
+    
+  
+  总结
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project_links/" class="md-tabs__link">
+        
+  
+    
+  
+  项目链接
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="网络技术简介-中文版" class="md-nav__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    网络技术简介-中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络架构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链路层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络层（IP）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    域名系统
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    域名系统
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#域名分配" class="md-nav__link">
+    域名分配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#读取域名" class="md-nav__link">
+    读取域名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    应用层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSI 模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目链接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#域名分配" class="md-nav__link">
+    域名分配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#读取域名" class="md-nav__link">
+    读取域名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="域名系统">域名系统<a class="headerlink" href="#域名系统" title="Permanent link">&para;</a></h1>
+<p><strong>The Domain Name System</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">中文</label><label for="__tabbed_1_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>域名系统（DNS）让你可以通过域名（如 <www.khanacademy.org> ）访问网站，而不必记住像 "212.78.1.25" 这样的数字互联网协议（IP）地址。IP 地址由你的计算机连接到互联网的位置决定。当你使用便携式计算机从一个地方移动到另一个地方时，每个新位置都会获得一个新的 IP 地址。由于没有人直接连接到你的便携计算机，因此 IP 地址的变化并不重要。但由于许多人连接到一个网络服务器，如果服务器移动到新位置并需要更改其 IP 地址，这将会非常不便。</p>
+<p>当你的计算机通过域名地址与系统建立连接时，首先要查找与域名对应的 IP 地址。然后，计算机使用这个 IP 地址建立连接。</p>
+<p>添加查找 DNS 地址的 IP 地址的单独步骤，也使得将服务器从一个位置移动到另一个位置变得更容易。服务器会被分配一个新的 IP 地址，并更新域名的条目。一旦 DNS 条目被更新，新请求将获得新的 IP 地址。由于最终用户通常通过域名访问大多数服务器，并且从未看到 IP 地址，因此服务器可以在不影响最终用户访问的情况下，移动到新的网络连接。</p>
+</div>
+<div class="tabbed-block">
+<p>The Domain Name System lets you access websites by their domain name like (www.khanacademy.org), so you don't have to keep a list of numeric Internet Protocol (IP) addresses like "212.78.1.25". IP address are determined by <em>where</em> your computer connects to the Internet. When you have a portable computer and you move from one location to another, you get a new IP address at each new location. Since no one connects to your portable computer, it does not matter if your IP address changes from time to time. But since so many people connect to a web server, it would be inconvenient if the server moved to a new location and needed to change its IP address. </p>
+<p>When your computer makes a connection to a system using a domain name address, the first thing your computer does is look up the IP address that corresponds to the domain name. Then your computer makes the connection using the IP address.</p>
+<p>Adding the separate step of looking up the IP address for a DNS address also makes it easier to move a server from one location to another. The server is given a new IP address and the entry for the domain address is updated. Once the DNS entry is updated, new requests for the domain name are given the new IP address. Since end users access most servers using domain names and never see the IP address, a server can be moved to a new network connection without affecting the end user's ability to access the server.</p>
+</div>
+</div>
+</div>
+<h2 id="域名分配">域名分配<a class="headerlink" href="#域名分配" title="Permanent link">&para;</a></h2>
+<p><strong>Allocating Domain Names</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">中文</label><label for="__tabbed_2_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>如果你还记得前一节，IP 地址是根据你将新网络连接到互联网的位置来分配的。而域名是基于拥有该域名的组织来分配的。在域名层级的顶端是一个名为互联网名称与数字地址分配机构（ICANN）的组织。ICANN 选择顶级域名（TLD），如 .com、.edu 和 .org，并将它们分配给其他组织进行管理。最近，一组新的顶级域名如 .club 和 .help 已经开始提供使用。</p>
+<p>ICANN 还为全球各国分配了两字母的国家代码顶级域名，如 .us、.za、.nl 和 .jp。我们将这些称为国家代码顶级域名（ccTLDs）。各个国家通常会添加二级顶级域名，例如英国的 .co.uk，用于商业组织。申请任何特定 ccTLD 的政策在各国之间差异很大。</p>
+<p><a class="glightbox" href="../sketchnote/DNS.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="域名" src="../sketchnote/DNS.svg" /></a></p>
+<p>一旦某个域名被分配给某个组织，控制该域名的组织有权在该域名下分配子域名。例如，.edu 顶级域名分配给 Educause 组织，Educause 会将像 umich.edu 这样的域名分配给高等教育机构。一旦密歇根大学获得 umich.edu 的控制权，它就可以在其新域名内自主选择子域名。以 .com 和 .org 结尾的域名可以由个人购买。个人域名所有者可以管理其域名，并为自己或他人创建子域名。</p>
+</div>
+<div class="tabbed-block">
+<p>If you recall from the previous section, IP addresses are allocated based on where you connect a new network to the Internet. Domain names are allocated based on organizations that "own" the domain name. At the top of the domain name hierarchy is an organization called the International Corporation for Assigned Network Names and Numbers(ICANN). ICANN chooses the top-level domains (TLDs) like .com, .edu, and .org and assigns those to other organizations to manage.  Recently a new set of TLDs like .club and .help have been made available.</p>
+<p>ICANN also assigns two-letter country code top-level domain names like .us, .za, .nl, and .jp to countries around the world We call these Country-Code Top-Level Domain Names (ccTLDs).  Countries often add  second-level TLDs, like .co.uk for commercial organizations within the UK.  Policies for applying for domain names with any particular ccTLD vary widely from one country to another.</p>
+<p><a class="glightbox" href="../sketchnote/DNS.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Domain Names" src="../sketchnote/DNS.svg" /></a></p>
+<p>Once a domain name is assigned to an organization, the controlling organization is allowed to assign subdomains within the domain. As an example, the .edu top-level domain is assigned to the Educause organization. Educause assigns domains like umich.edu to higher education institutions. Once the University of Michigan is given control of umich.edu, it can make its own choices for subdomains within its new domain. Domains ending in .com and .org can be purchased by individuals. The individual owners of those domains are allowed to manage their domain and create subdomains under it for their own use or use by others.</p>
+</div>
+</div>
+</div>
+<h2 id="读取域名">读取域名<a class="headerlink" href="#读取域名" title="Permanent link">&para;</a></h2>
+<p><strong>Reading Domain Names</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">中文</label><label for="__tabbed_3_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>当我们查看一个 IP 地址，比如 "212.78.1.25" 时，左侧的前缀是“网络号码”，因此在某种意义上，我们是从左到右读取 IP 地址的，左侧部分是地址中最一般的部分，而右侧部分是最具体的部分：</p>
+<div class="language-text highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>212.78.1.25
+广泛 ----&gt; 狭窄
+</code></pre></div>
+<p>对于域名，我们是从右到左读取的：</p>
+<div class="language-text highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>drchuck.personal.si.umich.edu
+狭窄       &lt;---       广泛
+</code></pre></div>
+<p>这个域名中最一般的部分是 ".edu"，表示高等教育机构。子域名 "umich.edu" 则是一个特定的高等教育机构。</p>
+</div>
+<div class="tabbed-block">
+<p>When we look at an IP address like "212.78.1.25", the left prefix is the "Network Number", so in a sense we read IP addresses from left to right, where the left part of the IP address is the most general part of the address and right part of the address is most specific:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">212.78.1.25</span>
+<span class="n">Broad</span><span class="w"> </span><span class="o">----&gt;</span><span class="w"> </span><span class="n">Narrow</span>
+</code></pre></div>
+
+<p>For domain names, we read from right to left:</p>
+<div class="codehilite"><pre><span></span><code>drchuck.personal.si.umich.edu
+Narrow       &lt;---       Broad
+</code></pre></div>
+
+<p>The most general part of this domain name is ".edu", which means higher education institutions. The subdomain "umich.edu" is a particular higher education institution.</p>
+</div>
+</div>
+</div>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p><strong>Summary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">中文</label><label for="__tabbed_4_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>虽然域名系统并不是我们模型中的四个层次之一，但它是使互联网更易于使用的重要组成部分。域名允许最终用户使用符号名称来代替数字互联网协议地址。通过添加一个将域名映射到 IP 地址的服务，我们可以将服务器从一个互联网连接移动到另一个连接，而不需要用户手动更改其配置以连接到服务器。</p>
+<p>如果您想为自己或您的公司购买域名，可以选择任意数量的域名注册商。</p>
+</div>
+<div class="tabbed-block">
+<p>While the Domain Name System is not one of our four layers in the model, it is an important part of making the Internet easier to use. Domain names allow end users to use symbolic names for servers instead of numeric Internet Protocol addresses. By adding a service that maps domain names to IP addresses, we can move servers from one Internet connection to another connection without requiring users to manually change their configurations to connect to a server.</p>
+<p>If you would like to purchase a domain name for yourself or your company, you can  choose from any number of domain name registrars.</p>
+</div>
+</div>
+</div>
+<h2 id="术语">术语<a class="headerlink" href="#术语" title="Permanent link">&para;</a></h2>
+<p><strong>Glossary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">中文</label><label for="__tabbed_5_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>DNS</strong>: 域名系统。一个协议和服务器的系统，允许网络应用查找域名并检索对应的 IP 地址。</p>
+<p><strong>域名</strong>: 在顶级域内分配的名称。例如，khanacademy.org 是在 ".org" 顶级域内分配的域名。</p>
+<p><strong>ICANN</strong>: 国际分配网络名称和号码公司。负责互联网的顶级域名的分配和管理。</p>
+<p><strong>注册商</strong>: 可以注册、销售和托管域名的公司。</p>
+<p><strong>子域名</strong>: 在域名“下方”创建的名称。例如，"umich.edu" 是一个域名，而 "www.umich.edu" 和 "mail.umich.edu" 是 "umich.edu" 内的子域名。</p>
+<p><strong>TLD</strong>: 顶级域。域名最右侧的部分。示例 TLD 包括 ".com"、".org" 和 ".ru"。最近，添加了像 ".club" 和 ".help" 的新顶级域。</p>
+</div>
+<div class="tabbed-block">
+<p><strong>DNS</strong>: Domain Name System.  A system of protocols and servers that allow networked applications to look up domain names and retrieve the corresponding IP address for the domain name.</p>
+<p><strong>domain name</strong>: A name that is assigned within a top-level domain. For example, khanacademy.org is a domain that is assigned within the ".org" top-level domain.</p>
+<p><strong>ICANN</strong>: International Corporation for Assigned Network Names and Numbers. Assigns and manages the top-level domains for the Internet.</p>
+<p><strong>registrar</strong>: A company that can register, sell, and host domain names.</p>
+<p><strong>subdomain</strong>: A name that is created "below" a domain name. For example, "umich.edu" is a domain name and both "www.umich.edu" and "mail.umich.edu" are subdomains within "umich.edu".</p>
+<p><strong>TLD</strong>: Top Level Domain.  The rightmost portion of the domain name. Example TLDs include ".com", ".org", and ".ru". Recently, new top-level domains like ".club" and ".help" were added.</p>
+</div>
+</div>
+</div>
+<h2 id="问题">问题<a class="headerlink" href="#问题" title="Permanent link">&para;</a></h2>
+<p><strong>Questions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">中文</label><label for="__tabbed_6_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>您可以在线参加这个测验，网址是 <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>域名系统的作用是什么？</p>
+<p>a) 允许网络连接的计算机使用文本名称来查找其 IP 地址</p>
+<p>b) 跟踪所有服务器的 GPS 坐标</p>
+<p>c) 允许区域互联网注册机构 (RIR) 管理各大洲的 IP 地址</p>
+<p>d) 为可移动计算机在不同 WiFi 之间移动时分配不同的 IP 地址</p>
+</li>
+<li>
+<p>哪个组织分配顶级域名，如 ".com"、".org" 和 ".club"？</p>
+<p>a) IANA - 互联网分配号码管理局</p>
+<p>b) IETF - 互联网工程任务组</p>
+<p>c) ICANN - 国际分配网络名称和号码公司</p>
+<p>d) IMAP - 互联网映射授权协议</p>
+</li>
+<li>
+<p>以下哪个是域名地址？</p>
+<p>a) 0f:2a:b3:1f:b3:1a</p>
+<p>b) 192.168.3.14</p>
+<p>c) www.khanacademy.org</p>
+<p>d) @drchuck</p>
+</li>
+<li>
+<p>以下哪个不是域名所有者可以做的事情？</p>
+<p>a) 创建子域名</p>
+<p>b) 出售子域名</p>
+<p>c) 创建新的顶级域名</p>
+<p>d) 为域名或子域名分配 IP 地址</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>You can take this quiz online at <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>What does the Domain Name System accomplish?</p>
+<p>a) It allows network-connected computers to use a textual name for a computer and look up its IP address</p>
+<p>b) It keeps track of the GPS coordinates of all servers</p>
+<p>c) It allows Regional Internet Registries (RIRs) to manage IP addresses on the various continents</p>
+<p>d) It assigns different IP addresses to portable computers as they move from one WiFi to another</p>
+</li>
+<li>
+<p>What organization assigns top-level domains like ".com", ".org", and ".club"?</p>
+<p>a) IANA - Internet Assigned Numbers Authority</p>
+<p>b) IETF - Internet Engineering Task Force</p>
+<p>c) ICANN - International Corporation for Assigned Network Names and Numbers</p>
+<p>d) IMAP - Internet Mapping Authorization Protocol</p>
+</li>
+<li>
+<p>Which of these is a domain address?</p>
+<p>a) 0f:2a:b3:1f:b3:1a</p>
+<p>b) 192.168.3.14</p>
+<p>c) www.khanacademy.org</p>
+<p>d) @drchuck</p>
+</li>
+<li>
+<p>Which of these is <em>not</em> something a domain owner can do with their domain?</p>
+<p>a) Create subdomains</p>
+<p>b) Sell subdomains</p>
+<p>c) Create new top-level domains</p>
+<p>d) Assign an IP address to the domain or subdomain</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月20日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月19日</span>
+      
+    
+  </small>
+</div>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.tabs.link", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.prune", "navigation.instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.94c44541.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

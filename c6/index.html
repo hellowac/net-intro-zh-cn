@@ -1,0 +1,1314 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="hellowac-类型检查">
+      
+      
+      
+      
+        <link rel="prev" href="../c5/">
+      
+      
+        <link rel="next" href="../c7/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
+    
+    
+      
+        <title>传输层 - 网络技术简介-中文版</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bd3936ea.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#传输层" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+你当前浏览的版本已不是最新版本，
+<a href="./..">
+    <strong>点击这里</strong>
+</a>查看最新版本的文档
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="网络技术简介-中文版" class="md-header__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            网络技术简介-中文版
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              传输层
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c1/" class="md-tabs__link">
+        
+  
+    
+  
+  简介
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c2/" class="md-tabs__link">
+        
+  
+    
+  
+  网络架构
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c3/" class="md-tabs__link">
+        
+  
+    
+  
+  链路层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c4/" class="md-tabs__link">
+        
+  
+    
+  
+  网络层（IP）
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c5/" class="md-tabs__link">
+        
+  
+    
+  
+  域名系统
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c7/" class="md-tabs__link">
+        
+  
+    
+  
+  应用层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c8/" class="md-tabs__link">
+        
+  
+    
+  
+  安全传输层
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c9/" class="md-tabs__link">
+        
+  
+    
+  
+  OSI 模型
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../c10/" class="md-tabs__link">
+        
+  
+    
+  
+  总结
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project_links/" class="md-tabs__link">
+        
+  
+    
+  
+  项目链接
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="网络技术简介-中文版" class="md-nav__button md-logo" aria-label="网络技术简介-中文版" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    网络技术简介-中文版
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hellowac/net-intro-zh-cn" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    hellowac/myppy-zh-cn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络架构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    链路层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络层（IP）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    域名系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    传输层
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    传输层
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#数据包头" class="md-nav__link">
+    数据包头
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数据包重组与重传" class="md-nav__link">
+    数据包重组与重传
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#传输层的运行" class="md-nav__link">
+    传输层的运行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#应用程序客户端和服务器" class="md-nav__link">
+    应用程序客户端和服务器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#服务器应用程序与端口" class="md-nav__link">
+    服务器应用程序与端口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    应用层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全传输层
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OSI 模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    项目链接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#数据包头" class="md-nav__link">
+    数据包头
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数据包重组与重传" class="md-nav__link">
+    数据包重组与重传
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#传输层的运行" class="md-nav__link">
+    传输层的运行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#应用程序客户端和服务器" class="md-nav__link">
+    应用程序客户端和服务器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#服务器应用程序与端口" class="md-nav__link">
+    服务器应用程序与端口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#术语" class="md-nav__link">
+    术语
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#问题" class="md-nav__link">
+    问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="传输层">传输层<a class="headerlink" href="#传输层" title="Permanent link">&para;</a></h1>
+<p><strong>Transport Layer</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">中文</label><label for="__tabbed_1_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>从互联层向上的下一个层是传输层。互联层的一个关键元素是它不试图保证任何特定数据包的送达。尽管互联层几乎是完美的，但有时数据包可能会丢失或被错误路由。</p>
+<p><a class="glightbox" href="../images/layers-transport.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="传输层" src="../images/layers-transport.svg" /></a></p>
+<p>但网络用户希望能够可靠地发送整个文件或消息。如果网络只能发送大多数情况下能接收到的数据包，那它对我们没有太大用处。为了使网络有用，所有数据包需要重新组装成正确的顺序，以在接收系统上重建消息。网络还必须处理乱序到达或根本不到达的数据包。传输层是我们处理可靠性和在目标计算机上重建消息的地方。</p>
+<p>与IP层一样，传输层会在每个数据包中添加少量数据，以帮助解决数据包重组和重传的问题。</p>
+</div>
+<div class="tabbed-block">
+<p>The next layer up from the Internetworking layer is the Transport layer. A key element of the Internetworking layer is that it does not attempt to guarantee delivery of any particular packet.   The Internetworking layer is nearly perfect, but sometimes packets can be lost or misrouted.</p>
+<p><a class="glightbox" href="../images/layers-transport.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="The Transport Layer" src="../images/layers-transport.svg" /></a></p>
+<p>But users of the network want to reliably send entire files or messages across the Internet. A network is not much good to us if all it can do is send packets that are received most of the time. For the network to be useful, all of the packets need to be reassembled into the right order to reconstruct the message on the receiving system. The network must also deal with packets that arrive out of order or never arrive at all. The Transport layer is where we handle reliability and message reconstruction on the destination computer.</p>
+<p>Just like the IP layer, the Transport layer adds a small amount of data to each packet to help solve the problems of packet reassembly and retransmission.</p>
+</div>
+</div>
+</div>
+<h2 id="数据包头">数据包头<a class="headerlink" href="#数据包头" title="Permanent link">&para;</a></h2>
+<p><strong>Packet Headers</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">中文</label><label for="__tabbed_2_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>如果你观察一个数据包在其源计算机和目标计算机之间的多个链接中传输，你会看到一个链路头部、一个IP头部和一个传输控制协议（TCP）头部，以及数据包中的实际数据。</p>
+<p><a class="glightbox" href="../images/headers.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="头部和数据" src="../images/headers.svg" /></a></p>
+<p>当数据包在一个链接上接收时，链路头部会被移除，而当数据包在下一个链接上发送时，会添加一个新的链路头部。IP和TCP头部在数据包经过每个链接时始终保留。请记住，数据包在通过互联网路由时可能会经过多种类型的链路层。</p>
+<p>IP头部包含源和目标互联网协议（IP）地址，以及数据包的生存时间（TTL）。IP头部在源计算机上设置，并在数据包通过各个路由器传输时保持不变（除了TTL）。</p>
+<p>TCP头部指示每个数据包中数据的位置。当源计算机将消息或文件分割成数据包时，它会跟踪每个数据包相对于消息或文件起始位置的偏移，并在每个创建和发送的数据包中放入该偏移量。</p>
+</div>
+<div class="tabbed-block">
+<p>If you were to look at a packet going across one of many links between its source and destination computers, you would see a link header, an IP header, and a Transport Control Protocol (TCP) header, along with the actual data in the packet.</p>
+<p><a class="glightbox" href="../images/headers.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Headers and Data" src="../images/headers.svg" /></a></p>
+<p>The link header is removed when the packet is received on one link and a new link header is added when the packet is sent out on the next link on its journey. The IP and TCP headers stay with a packet as it is going across each link in its journey. Remember that a packet may go across several types of link layers as it is routed through the Internet.</p>
+<p>The IP header holds the source and destination Internet Protocol (IP) addresses as well as the Time to Live (TTL) for the packet. The IP header is set on the source computer and is unchanged (other than the TTL) as the packet moves through the various routers on its journey.</p>
+<p>The TCP headers indicate where the data in each packet belongs. As the source computer breaks the message or file into packets, it keeps track of the position of each packet relative to the beginning of the message or file and places the offset in each packet that is created and sent.</p>
+</div>
+</div>
+</div>
+<h2 id="数据包重组与重传">数据包重组与重传<a class="headerlink" href="#数据包重组与重传" title="Permanent link">&para;</a></h2>
+<p><strong>Packet Reassembly and Retransmission</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">中文</label><label for="__tabbed_3_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>当目标计算机接收到数据包时，它会查看数据包相对于消息开头的偏移位置，以便将数据包放入重组消息的正确位置。通过确保将数据包数据放在相对于消息开头的正确位置，传输层可以轻松处理乱序到达的数据包。如果它接收到一个在消息后面的数据包，它会将该数据包放入缓冲区，并记录当前在重构的消息中存在一个缺口。当稍后接收到之前的数据包时，它恰好填补了重组数据中的缺口。</p>
+<p>为了避免网络过载，发送计算机的传输层在发送一定量的数据后，会等待目标计算机的传输层确认数据包已被接收。发送计算机在暂停等待确认之前可以发送的数据量称为“窗口大小”。</p>
+<p>发送计算机会跟踪从接收计算机开始接收确认的速度。如果确认快速返回，发送计算机会增加窗口大小；如果确认返回缓慢，发送计算机会减少发送的数据量。通过调整窗口大小，发送计算机可以在快速且负载轻的连接上快速发送大量数据，而在慢速或负载重的链接上则可以以不致于过载网络的方式发送数据。</p>
+<p>如果一个数据包丢失，它将永远无法到达目标计算机，因此目标计算机将永远不会发送该数据的确认。由于发送计算机没有收到确认，它会迅速达到发送了足够的未确认数据以填满窗口的程度，并停止发送新数据包。</p>
+<p>此时，两个计算机都在等待。发送计算机在等待一个永远不会到来的丢失数据包的确认，而接收计算机在等待一个永远不会到来的丢失数据包。为了确保计算机不会永远等待，目标计算机会跟踪自收到最后一个数据包以来经过的时间。在某个时刻，接收计算机会判断时间已过太久，并向发送计算机发送一个数据包，指示接收计算机最后接收到数据的流位置。当发送计算机收到该消息时，它会“回退”并从接收计算机最后成功接收的位置重新发送数据。</p>
+<p><a class="glightbox" href="../sketchnote/Transport.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="等待丢失的数据包" src="../sketchnote/Transport.svg" /></a></p>
+<p>接收计算机确认接收的数据、限制发送计算机过快（窗口大小），以及接收计算机在数据似乎丢失时请求发送计算机“回退并重启”的结合，创建了一种相对简单的方法来可靠地通过网络发送大型消息或文件。</p>
+<p>在传输层发送数据流的同时，它会持续监控接收确认的速度，并动态调整窗口大小。这确保了在两个计算机之间的连接快速时，数据能迅速发送；而在连接慢或负载重的情况下，数据则会以更慢的速度发送。</p>
+</div>
+<div class="tabbed-block">
+<p>As the destination computer receives the packets, it looks at the offset position from the beginning of the message so it can put the packet into the proper place in the reassembled message. Simply by making sure to put the packet data at the correct position relative to the beginning of the message, the Transport layer easily handles packets that arrive out of order.  If it receives a packet further down a message, it places that packet in a buffer, keeping track of the fact that there is now a gap in the message that is being reconstructed. When the earlier packet arrives a moment later, it fits perfectly into the gap in the reassembled data.</p>
+<p>To avoid overwhelming the network, the Transport layer in the sending computer only sends a certain amount of data before waiting for an acknowledgement from the Transport layer on the destination computer that the packets were received. The amount of data that the sending computer will send before pausing to wait for an acknowledgment is called the "window size".</p>
+<p>The sending computer keeps track of how quickly it starts to receive acknowledgements from the receiving computer. If the acknowledgments come back quickly, the sending computer increases its window size, but if the acknowledgments come back slowly, the sending computer transmits less data. By adjusting the window size, transmitting computers can send large amounts of data quickly over fast connections that have light loads. When sending data over slow or heavily loaded links, they can send the data in a way that does not overwhelm the network.</p>
+<p>If a packet is lost, it will never arrive at the destination computer and so the destination computer will never send an acknowledgment for that data. Because the sending computer does not receive an acknowledgment, it quickly reaches the point where it has sent enough unacknowledged data to fill up the window and stops sending new packets.</p>
+<p>At this point, both computers are waiting. The sending computer is waiting for an acknowledgement for a lost packet that will never come and the receiving computer is waiting for a lost packet that will never come. To make sure that the computers do not wait forever, the destination computer keeps track of the amount of time since it received the last packet of data. At some point, the receiving computer decides too much time has passed and sends a packet to the sending computer indicating where in the stream the receiving computer has last received data. When the sending computer receives this message, it "backs up" and resends data from the last position that the receiving computer had successfully received.</p>
+<p><a class="glightbox" href="../sketchnote/Transport.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Waiting for a Lost Packet" src="../sketchnote/Transport.svg" /></a></p>
+<p>The combination of the receiving computer acknowledging received data, not allowing the transmitting computer to get too far ahead (window size), and the receiving computer requesting the sending computer to "back up and restart" when it appears that data has been lost creates a relatively simple method to reliably send large messages or files across a network.</p>
+<p>While the Transport layer is sending a stream of data, it continuously monitors how quickly it receives acknowledgements and dynamically adjusts its window size. This ensures that data is sent rapidly when the connection between two computers is fast and much more slowly when the connection has slow links or a heavy load.</p>
+</div>
+</div>
+</div>
+<h2 id="传输层的运行">传输层的运行<a class="headerlink" href="#传输层的运行" title="Permanent link">&para;</a></h2>
+<p><strong>The Transport Layer In Operation</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">中文</label><label for="__tabbed_4_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>传输层的一个关键元素是发送计算机必须在数据被确认之前保持所有发送的数据。一旦接收计算机确认了数据，发送计算机就可以丢弃已发送的数据。当一条消息被分成多个数据包时，我们可以通过图形来观察这一过程。在这里，消息的前十个数据包已被发送并得到目标计算机（'a'）的确认。发送计算机又发送了六个数据包（'S'），然后因达到窗口大小而停止。</p>
+<p><a class="glightbox" href="../images/transport-buffer.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="传输层中的缓冲" src="../images/transport-buffer.svg" /></a></p>
+<p>有三个数据包已发送但尚未接收（“S”）。由于网络中存在许多跳数，多个数据包同时在网络中传输是非常常见的。</p>
+<p>接收计算机的传输层已经接收并确认了十个数据包，并将它们交付给接收应用程序（'a'）。目标计算机的传输层接收了另外三个数据包（'R'），但有一个数据包是乱序的。如果缺失的数据包在合理的时间内到达，接收乱序数据包并不是一个问题。只要所有数据包都被接收，接收传输层就会重构消息，将数据包像拼图一样拼接在一起，并将其交付给接收应用程序。</p>
+</div>
+<div class="tabbed-block">
+<p>One of the key elements of the Transport layer is that the sending computer must hold on to all of the data it is sending until the data has been acknowledged. Once the receiving computer acknowledges the data, the sending computer can discard the sent data.  We can look at this graphically when a message is broken into many packets. Here, the first ten packets of the message have been sent and acknowledged by the destination computer ('a'). The sending computer has sent six more packets ('S'), and then stopped because it reached its window size.</p>
+<p><a class="glightbox" href="../images/transport-buffer.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buffering in the Transport Layer" src="../images/transport-buffer.svg" /></a></p>
+<p>There are three packets that have been sent but not yet received ("S").  Since there are many hops in the network, it is very common for more than one packet to be enroute in the network at the same time.</p>
+<p>The Transport layer on the receiving computer has received and acknowledged ten packets and delivered them to the receiving application ('a').^[We talk about the Application layer in later material.] The Transport layer on the destination computer has received more three packets ('R'), but one packet is out of order. Receiving a packet out of order is not a cause for concern if the missing packet arrives in a reasonably short amount of time. As long as all the packets are received, the receiving Transport layer will reconstruct the message, fitting the packets together like puzzle pieces, and deliver them to the receiving application.</p>
+</div>
+</div>
+</div>
+<h2 id="应用程序客户端和服务器">应用程序客户端和服务器<a class="headerlink" href="#应用程序客户端和服务器" title="Permanent link">&para;</a></h2>
+<p><strong>Application Clients and Servers</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">中文</label><label for="__tabbed_5_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>传输层的目的是为网络应用提供可靠的连接，以便这些应用能够发送和接收数据流。对于应用来说，这就像简单地请求传输层与运行在远程主机上的应用建立连接。我们将发起本地计算机连接的应用称为“客户端”，而响应连接请求的应用称为“服务器”。我们称这两个网络应用的组合为“客户端/服务器”应用，因为这两个部分必须协同工作。</p>
+<p>为了简化与远程计算机建立连接并在该连接上发送和接收数据的过程，我们的架构在底层的三个层级上进行了大量的工程设计。</p>
+</div>
+<div class="tabbed-block">
+<p>The purpose of the Transport layer is to provide reliable connections between networked applications so those applications can send and receive streams of data. For an application, this is as simple as asking the Transport layer to make a connection to an application running on a remote host. We call the application that initiates the connection on the local computer the "client" and the application that responds to the connection request the "server". We call the combination of the two networked applications at the ends of the connection a "client/server" application because the two pieces of the application must work together.</p>
+<p>A lot of engineering has gone into the lower three layers of our architecture to make it easy to open a connection to a remote computer and then send and receive data over that connection.</p>
+</div>
+</div>
+</div>
+<h2 id="服务器应用程序与端口">服务器应用程序与端口<a class="headerlink" href="#服务器应用程序与端口" title="Permanent link">&para;</a></h2>
+<p><strong>Server Applications and Ports</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">中文</label><label for="__tabbed_6_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>当客户端应用程序想要与远程计算机建立连接时，确保连接到正确的服务器应用程序是很重要的。远程计算机上可能同时运行多个不同的服务器应用程序。常见的服务器应用程序包括：</p>
+<ul>
+<li>网络服务器</li>
+<li>视频服务器</li>
+<li>邮件服务器</li>
+</ul>
+<p>例如，网络客户端（如浏览器）需要连接到远程计算机上运行的网络服务器。因此，客户端应用程序不仅需要知道要连接哪个远程计算机，还需要选择与该远程计算机上的特定应用程序进行交互。</p>
+<p>我们使用一个叫做“端口”的概念，允许客户端应用程序选择想要交互的服务器应用程序。端口就像电话的分机。所有的分机都有相同的电话号码（IP 地址），但每个分机（服务器应用程序）都有不同的分机号（端口号）。</p>
+<p>当服务器应用程序启动时，它会在指定的端口上“监听”传入的连接。一旦服务器应用程序注册了自己准备好接收连接，它就会等待第一个连接的到来。</p>
+<p>为了让客户端应用程序知道要连接哪个端口，各种服务器应用程序都有一份众所周知的默认端口列表：</p>
+<ul>
+<li>Telnet (23) - 登录</li>
+<li>SSH (22) - 安全登录</li>
+<li>HTTP (80) - 万维网</li>
+<li>HTTPS (443) - 安全网页</li>
+<li>SMTP (25) - 收件邮件</li>
+<li>IMAP (143/220/993) - 邮件检索</li>
+<li>POP (109/110) - 邮件检索</li>
+<li>DNS (53) - 域名解析</li>
+<li>FTP (21) - 文件传输</li>
+</ul>
+<p>这些是这些应用程序的常用端口。有时，服务器会在非标准端口上提供应用程序。如果你在进行网页开发，你可能会在非标准端口上运行网络服务器，如3000、8080或8888。如果你看到一个 URL 如：</p>
+<div class="codehilite"><pre><span></span><code>http://testing.example.com:8080/login
+</code></pre></div>
+
+<p>这里的“8080”表示你的浏览器将使用网络协议与服务器交互，但连接到8080端口，而不是默认的80端口。</p>
+</div>
+<div class="tabbed-block">
+<p>When a client application wants to make a connection to a remote computer, it is important that the connection is made to the correct server application on that remote computer.  A remote computer might have any number of different server applications running at the same time. Example server applications would include:</p>
+<ul>
+<li>Web Server</li>
+<li>Video Server</li>
+<li>Mail Server</li>
+</ul>
+<p><a class="glightbox" href="../sketchnote/Ports.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="TCP Ports" src="../sketchnote/Ports.svg" /></a></p>
+<p>For instance, a web client (a browser) needs to connect to the web server running on the remote computer. So a client application not only needs to know which remote computer to connect to, it also needs to choose a particular application to interact with on that remote computer.</p>
+<p>We use a concept called "ports" to allow a client application to choose which server application it wants to interact with. Ports are like telephone extensions. All of the extensions have the same phone number (IP Address) but each extension (server application) has a different extension number (port number).</p>
+<p>When a server application starts up, it "listens" for incoming connections on the specified port. Once the server application has registered that it is ready to receive incoming connections, it waits until the first connection is made.</p>
+<p>So that client applications know which port to connect to, there is a list of well-known default ports for various server applications:</p>
+<ul>
+<li>Telnet (23) - Login</li>
+<li>SSH (22) - Secure Login</li>
+<li>HTTP (80) - World Wide Web</li>
+<li>HTTPS (443) - Secure Web</li>
+<li>SMTP (25) - Incoming Mail</li>
+<li>IMAP (143/220/993) - Mail Retrieval</li>
+<li>POP (109/110) - Mail Retrieval</li>
+<li>DNS (53) - Domain Name Resolution</li>
+<li>FTP (21) - File Transfer</li>
+</ul>
+<p>These are the normal ports for these applications.  Sometimes servers will make applications available at non-standard ports.  If you are doing web development, you may run a web server at a non-standard port like 3000, 8080, or 8888.  If you see a URL like:</p>
+<div class="codehilite"><pre><span></span><code>http://testing.example.com:8080/login
+</code></pre></div>
+
+<p>the "8080" indicates that your browser is going to use the web protocols to interact with the server, but connect to port 8080 instead of the default port 80.</p>
+</div>
+</div>
+</div>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p><strong>Summary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">中文</label><label for="__tabbed_7_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>从某种意义上说，传输层的目的是弥补链路层和互联网层可能会丢失数据的事实。当下两层丢失或重新路由数据包时，传输层负责重新组装和/或重传这些数据。传输层的存在使得下两层能够忽略重传和速率限制的问题。</p>
+<p>分层架构的目标之一是将过于复杂的问题拆分为较小的子问题。每一层专注于解决整体问题的一部分，并假设其他层解决它们应该解决的问题。</p>
+</div>
+<div class="tabbed-block">
+<p>In a sense, the purpose of the Transport layer is to compensate for the fact that the Link and Internetworking layers might lose data. When the two lower layers lose or reroute packets, the Transport layer works to reassemble and/or retransmit that data. The existence of the Transport layer makes it possible for the two lower layers to ignore retransmission and rate-limiting issues.</p>
+<p>Part of the goal of a layered architecture is to break an overly complex problem into smaller subproblems. Each layer focuses on solving part of the overall problem and assumes that the other layers solve the problems they are supposed to solve.</p>
+</div>
+</div>
+</div>
+<h2 id="术语">术语<a class="headerlink" href="#术语" title="Permanent link">&para;</a></h2>
+<p><strong>Glossary</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">中文</label><label for="__tabbed_8_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>确认</strong>：当接收计算机向源计算机发送通知，指示数据已被接收。</p>
+<p><strong>缓冲</strong>：暂时保存已发送或接收的数据，直到计算机确认这些数据不再需要。</p>
+<p><strong>监听</strong>：当服务器应用程序启动并准备接受来自客户端应用程序的传入连接时的状态。</p>
+<p><strong>端口</strong>：一种允许多个不同服务器应用程序在单台计算机上等待传入连接的方式。每个应用程序在不同的端口上监听。客户端应用程序通过连接到知名端口号来确保它们与正确的服务器应用程序进行通信。</p>
+</div>
+<div class="tabbed-block">
+<p><strong>acknowledgement</strong>: When the receiving computer sends a notification back to the source computer indicating that data has been received.</p>
+<p><strong>buffering</strong>: Temporarily holding on to data that has been sent or received until the computer is sure the data is no longer needed.</p>
+<p><strong>listen</strong>: When a server application is started and ready to accept incoming connections from client applications.</p>
+<p><strong>port</strong>: A way to allow many different server applications to be waiting for incoming connections on a single computer. Each application listens on a different port. Client applications make connections to well-known port numbers to make sure they are talking to the correct server application.</p>
+</div>
+</div>
+</div>
+<h2 id="问题">问题<a class="headerlink" href="#问题" title="Permanent link">&para;</a></h2>
+<p><strong>Questions</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">中文</label><label for="__tabbed_9_2">英文</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>您可以在 <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a> 在线参加这个测验。</p>
+<ol>
+<li>
+<p>传输（TCP）层要解决的主要问题是什么？</p>
+<p>a) 在多个跳跃之间传送数据包，从源计算机到目标计算机</p>
+<p>b) 通过单个物理连接移动数据包</p>
+<p>c) 处理丢失和乱序的数据包</p>
+<p>d) 处理敏感数据的加密</p>
+</li>
+<li>
+<p>TCP头中包含什么？</p>
+<p>a) 物理地址</p>
+<p>b) IP地址和生存时间（TTL）</p>
+<p>c) 端口号和偏移量</p>
+<p>d) 正在请求的文档</p>
+</li>
+<li>
+<p>“窗口大小”对网络正常运行为什么重要？</p>
+<p>a) 因为过大的数据包会堵塞光纤连接</p>
+<p>b) 它防止快速计算机在慢速连接上发送过多数据</p>
+<p>c) 它限制数据包在被丢弃之前可以经过的跳数</p>
+<p>d) 它确定IP地址的哪个部分是网络号</p>
+</li>
+<li>
+<p>当发送计算机收到来自接收计算机的确认时会发生什么？</p>
+<p>a) 发送计算机重新发送数据，以确保准确传输</p>
+<p>b) 发送计算机发送更多数据，直到达到窗口大小</p>
+<p>c) 发送计算机发送“对确认的确认”</p>
+<p>d) 发送计算机将确认发送到互联网地图（IMAP）</p>
+</li>
+<li>
+<p>哪一个能够检测并采取措施处理丢失的数据包？</p>
+<p>a) 发送计算机</p>
+<p>b) 网络网关</p>
+<p>c) 核心互联网路由器</p>
+<p>d) 接收计算机</p>
+</li>
+<li>
+<p>哪一个保留数据包，以便在数据包丢失时可以重新传输？</p>
+<p>a) 发送计算机</p>
+<p>b) 网络网关</p>
+<p>c) 核心互联网路由器</p>
+<p>d) 接收计算机</p>
+</li>
+<li>
+<p>哪一个最类似于TCP端口？</p>
+<p>a) 火车站</p>
+<p>b) 海底网络电缆</p>
+<p>c) 公寓号</p>
+<p>d) 雕塑花园</p>
+</li>
+<li>
+<p>客户端/服务器应用程序的哪一部分必须先启动？</p>
+<p>a) 客户端</p>
+<p>b) 服务器</p>
+</li>
+<li>
+<p>域名系统的端口号是什么？</p>
+<p>a) 22</p>
+<p>b) 80</p>
+<p>c) 53</p>
+<p>d) 143</p>
+</li>
+<li>
+<p>IMAP邮件检索协议的端口号是什么？</p>
+<p>a) 22</p>
+<p>b) 80</p>
+<p>c) 53</p>
+<p>d) 143</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>You can take this quiz online at <a href="http://www.net-intro.com/quiz/">http://www.net-intro.com/quiz/</a></p>
+<ol>
+<li>
+<p>What is the primary problem the Transport (TCP) layer is supposed to solve?</p>
+<p>a) Move packets across multiple hops from a source to destination computer</p>
+<p>b) Move packets across a single physical connection</p>
+<p>c) Deal with lost and out-of-order packets</p>
+<p>d) Deal with encryption of sensitive data</p>
+</li>
+<li>
+<p>What is in the TCP header?</p>
+<p>a) Physical address</p>
+<p>b) IP Address and Time to Live</p>
+<p>c) Port number and offset</p>
+<p>d) Which document is being requested</p>
+</li>
+<li>
+<p>Why is "window size" important for the proper functioning of the network?</p>
+<p>a) Because packets that are too large will clog fiber optic connections</p>
+<p>b) It prevents a fast computer from sending too much data on a slow connection</p>
+<p>c) It limits the number of hops a packet can take before it is dropped</p>
+<p>d) It determines what part of an IP address is the network number</p>
+</li>
+<li>
+<p>What happens when a sending computer receives an acknowledgement from the receiving computer?</p>
+<p>a) The sending computer resends the data to make sure it was transmitted accurately</p>
+<p>b) The sending computer sends more data up to the window size</p>
+<p>c) The sending computer sends an "acknowledgment for the acknowledgment"</p>
+<p>d) The sending computer sends the acknowledgement to the Internet Map (IMAP)</p>
+</li>
+<li>
+<p>Which of these detects and takes action when packets are lost?</p>
+<p>a) Sending computer</p>
+<p>b) Network gateway</p>
+<p>c) Core Internet routers</p>
+<p>d) Receiving computer</p>
+</li>
+<li>
+<p>Which of these retains data packets so they can be retransmitted if a packets lost?</p>
+<p>a) Sending computer</p>
+<p>b) Network gateway</p>
+<p>c) Core Internet routers</p>
+<p>d) Receiving computer</p>
+</li>
+<li>
+<p>Which of these is most similar to a TCP port?</p>
+<p>a) Train station</p>
+<p>b) Undersea network cable</p>
+<p>c) Apartment number</p>
+<p>d) Sculpture garden</p>
+</li>
+<li>
+<p>Which half of the client/server application must start first?</p>
+<p>a) Client</p>
+<p>b) Server</p>
+</li>
+<li>
+<p>What is the port number for the Domain Name System?</p>
+<p>a) 22</p>
+<p>b) 80</p>
+<p>c) 53</p>
+<p>d) 143</p>
+</li>
+<li>
+<p>What is the port number for the IMAP mail retrieval protocol?</p>
+<p>a) 22</p>
+<p>b) 80</p>
+<p>c) 53</p>
+<p>d) 143</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月20日</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年9月19日</span>
+      
+    
+  </small>
+</div>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["header.autohide", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "content.tabs.link", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.prune", "navigation.instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.94c44541.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
